@@ -95,7 +95,7 @@ const LandingPage: React.FC = () => {
                   <Users size={18} className="mr-2" />
                   JOIN GAME
                 </button>
-                <button className="w-full pixel-button bg-purple-600 hover:bg-purple-700 flex items-center justify-center">
+                <button className="w-full pixel-button bg-slate-600 flex items-center justify-center">
                   <User size={18} className="mr-2" />
                   Single Player
                 </button>
@@ -112,7 +112,7 @@ const LandingPage: React.FC = () => {
                 </button>
                 <button 
                   onClick={() => setIsInstructionsModalOpen(true)}
-                  className="w-full pixel-button bg-emerald-600 hover:bg-emerald-700 flex items-center justify-center"
+                  className="w-full pixel-button bg-slate-600 flex items-center justify-center"
                 >
                   <BookOpen size={18} className="mr-2" />
                   Instructions
@@ -123,7 +123,7 @@ const LandingPage: React.FC = () => {
               <div className="col-span-2">
                 <button 
                   onClick={() => setIsLanguageModalOpen(true)}
-                  className="w-full pixel-button bg-indigo-600 hover:bg-indigo-700 flex items-center justify-center gap-2"
+                  className="w-full pixel-button bg-slate-600 flex items-center justify-center gap-2"
                 >
                   <Languages size={18} />
                   <span className="text-sm">🇺🇸</span> English (English)
@@ -206,7 +206,7 @@ const LandingPage: React.FC = () => {
       <div className="fixed bottom-6 right-6 z-50">
         <button 
           onClick={() => setIsSettingsModalOpen(true)}
-          className="pixel-button bg-cyan-600 hover:bg-cyan-700 p-3"
+          className="pixel-button p-3"
         >
           <Settings size={24} />
         </button>
