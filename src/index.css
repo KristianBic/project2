@@ -42,10 +42,11 @@
   .pixel-button {
     @apply relative font-pixel text-white px-6 py-3 transition-all duration-150;
     background: theme(colors.blue.600);
+        border-radius: 8px;
     box-shadow: 
       inset -2px -2px 0 0 theme(colors.blue.800),
       inset 2px 2px 0 0 theme(colors.blue.400);
-        border-radius: 8px;
+    
   }
 
   .pixel-button:hover {
