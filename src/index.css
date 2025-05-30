@@ -5,6 +5,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    border-radius: 8px;
   }
 
   @font-face {
