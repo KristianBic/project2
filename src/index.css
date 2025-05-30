@@ -45,6 +45,7 @@
     box-shadow: 
       inset -2px -2px 0 0 theme(colors.blue.800),
       inset 2px 2px 0 0 theme(colors.blue.400);
+        border-radius: 8px;
   }
 
   .pixel-button:hover {
