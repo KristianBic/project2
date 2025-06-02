@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings, User, Mail, LogIn, Users, Swords, BookOpen, Languages, Bell } from 'lucide-react';
+import { Settings, User, Mail, LogIn, Users, Swords, BookOpen, Languages, Bell, Flag, Palette } from 'lucide-react';
 import { useTheme } from '../components/theme/ThemeProvider';
 import Logo from '../components/ui/Logo';
 import LoginModal from '../components/modals/LoginModal';
@@ -25,6 +25,11 @@ const LandingPage: React.FC = () => {
     description: string;
   }>(null);
   const [username, setUsername] = useState('');
+  const [selectedFlag, setSelectedFlag] = useState('🇺🇸');
+  const [selectedPattern, setSelectedPattern] = useState('⚜️');
+
+  const flags = ['🇺🇸', '🇬🇧', '🇫🇷', '🇩🇪', '🇮🇹', '🇪🇸', '🇷🇺', '🇯🇵', '🇰🇷', '🇨🇳'];
+  const patterns = ['⚜️', '☘️', '✴️', '❇️', '✳️', '〽️', '🔰', '🎴', '🔱', '📛'];
 
   const news = [
     {
@@ -40,6 +45,9 @@ const LandingPage: React.FC = () => {
       description: '• Improved troop movement AI\n• Fixed alliance request bug\n• Adjusted resource generation rates'
     }
   ];
+
+  const [showFlagDropdown, setShowFlagDropdown] = useState(false);
+  const [showPatternDropdown, setShowPatternDropdown] = useState(false);
   
   return (
     <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-between relative overflow-hidden">
@@ -137,15 +145,80 @@ const LandingPage: React.FC = () => {
             {/* Quick Join */}
             <div className="pixel-panel p-4">
               <h3 className="font-pixel text-xl text-white mb-4">QUICK JOIN</h3>
-              <div className="relative">
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  placeholder="ENTER USERNAME..."
-                  className="w-full px-4 py-3 bg-slate-800 border-2 border-slate-700 font-pixel text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
-                  style={{ caretColor: '#60A5FA' }}
-                />
+              <div className="space-y-4">
+                <div className="relative">
+                  <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="ENTER USERNAME..."
+                    className="w-full px-4 py-3 bg-slate-800 border-2 border-slate-700 font-pixel text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                    style={{ caretColor: '#60A5FA' }}
+                  />
+                </div>
+                <div className="flex gap-2">
+                  {/* Flag Selection */}
+                  <div className="relative">
+                    <button
+                      onClick={() => {
+                        setShowFlagDropdown(!showFlagDropdown);
+                        setShowPatternDropdown(false);
+                      }}
+                      className="pixel-button bg-slate-700 p-3 flex items-center justify-center min-w-[48px]"
+                    >
+                      <span className="text-xl">{selectedFlag}</span>
+                    </button>
+                    {showFlagDropdown && (
+                      <div className="absolute top-full left-0 mt-2 w-48 pixel-panel p-2 z-50">
+                        <div className="grid grid-cols-5 gap-1">
+                          {flags.map((flag) => (
+                            <button
+                              key={flag}
+                              onClick={() => {
+                                setSelectedFlag(flag);
+                                setShowFlagDropdown(false);
+                              }}
+                              className="p-2 hover:bg-slate-700 transition-colors text-xl"
+                            >
+                              {flag}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Pattern Selection */}
+                  <div className="relative">
+                    <button
+                      onClick={() => {
+                        setShowPatternDropdown(!showPatternDropdown);
+                        setShowFlagDropdown(false);
+                      }}
+                      className="pixel-button bg-slate-700 p-3 flex items-center justify-center min-w-[48px]"
+                    >
+                      <span className="text-xl">{selectedPattern}</span>
+                    </button>
+                    {showPatternDropdown && (
+                      <div className="absolute top-full left-0 mt-2 w-48 pixel-panel p-2 z-50">
+                        <div className="grid grid-cols-5 gap-1">
+                          {patterns.map((pattern) => (
+                            <button
+                              key={pattern}
+                              onClick={() => {
+                                setSelectedPattern(pattern);
+                                setShowPatternDropdown(false);
+                              }}
+                              className="p-2 hover:bg-slate-700 transition-colors text-xl"
+                            >
+                              {pattern}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
 
