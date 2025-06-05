@@ -226,10 +226,6 @@ const LandingPage: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                <button className="w-full pixel-button flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700">
-                  <Swords size={18} />
-                  PLAY NOW
-                </button>
               </div>
             </div>
 
