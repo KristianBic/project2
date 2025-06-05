@@ -146,79 +146,90 @@ const LandingPage: React.FC = () => {
             <div className="pixel-panel p-4">
               <h3 className="font-pixel text-xl text-white mb-4">QUICK JOIN</h3>
               <div className="space-y-4">
-                <div className="relative">
-                  <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="ENTER USERNAME..."
-                    className="w-full px-4 py-3 bg-slate-800 border-2 border-slate-700 font-pixel text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
-                    style={{ caretColor: '#60A5FA' }}
-                  />
-                </div>
                 <div className="flex gap-2">
-                  {/* Flag Selection */}
-                  <div className="relative">
-                    <button
-                      onClick={() => {
-                        setShowFlagDropdown(!showFlagDropdown);
-                        setShowPatternDropdown(false);
-                      }}
-                      className="pixel-button bg-slate-700 p-3 flex items-center justify-center min-w-[48px]"
-                    >
-                      <span className="text-xl">{selectedFlag}</span>
-                    </button>
-                    {showFlagDropdown && (
-                      <div className="absolute top-full left-0 mt-2 w-48 pixel-panel p-2 z-50">
-                        <div className="grid grid-cols-5 gap-1">
-                          {flags.map((flag) => (
-                            <button
-                              key={flag}
-                              onClick={() => {
-                                setSelectedFlag(flag);
-                                setShowFlagDropdown(false);
-                              }}
-                              className="p-2 hover:bg-slate-700 transition-colors text-xl"
-                            >
-                              {flag}
-                            </button>
-                          ))}
-                        </div>
+                  <div className="flex-1">
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+                        <User size={16} className="text-slate-500" />
                       </div>
-                    )}
+                      <input
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="ENTER USERNAME..."
+                        className="w-full pl-10 pr-4 py-3 bg-slate-800 border-2 border-slate-700 font-pixel text-white placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                        style={{ caretColor: '#60A5FA' }}
+                      />
+                    </div>
                   </div>
-
-                  {/* Pattern Selection */}
-                  <div className="relative">
-                    <button
-                      onClick={() => {
-                        setShowPatternDropdown(!showPatternDropdown);
-                        setShowFlagDropdown(false);
-                      }}
-                      className="pixel-button bg-slate-700 p-3 flex items-center justify-center min-w-[48px]"
-                    >
-                      <span className="text-xl">{selectedPattern}</span>
-                    </button>
-                    {showPatternDropdown && (
-                      <div className="absolute top-full left-0 mt-2 w-48 pixel-panel p-2 z-50">
-                        <div className="grid grid-cols-5 gap-1">
-                          {patterns.map((pattern) => (
-                            <button
-                              key={pattern}
-                              onClick={() => {
-                                setSelectedPattern(pattern);
-                                setShowPatternDropdown(false);
-                              }}
-                              className="p-2 hover:bg-slate-700 transition-colors text-xl"
-                            >
-                              {pattern}
-                            </button>
-                          ))}
+                  <div className="flex gap-1">
+                    {/* Flag Selection */}
+                    <div className="relative">
+                      <button
+                        onClick={() => {
+                          setShowFlagDropdown(!showFlagDropdown);
+                          setShowPatternDropdown(false);
+                        }}
+                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600"
+                      >
+                        <span className="text-xl">{selectedFlag}</span>
+                      </button>
+                      {showFlagDropdown && (
+                        <div className="absolute top-full right-0 mt-2 w-48 pixel-panel p-2 z-50">
+                          <div className="grid grid-cols-5 gap-1">
+                            {flags.map((flag) => (
+                              <button
+                                key={flag}
+                                onClick={() => {
+                                  setSelectedFlag(flag);
+                                  setShowFlagDropdown(false);
+                                }}
+                                className="p-2 hover:bg-slate-700 transition-colors text-xl"
+                              >
+                                {flag}
+                              </button>
+                            ))}
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      )}
+                    </div>
+
+                    {/* Pattern Selection */}
+                    <div className="relative">
+                      <button
+                        onClick={() => {
+                          setShowPatternDropdown(!showPatternDropdown);
+                          setShowFlagDropdown(false);
+                        }}
+                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600"
+                      >
+                        <span className="text-xl">{selectedPattern}</span>
+                      </button>
+                      {showPatternDropdown && (
+                        <div className="absolute top-full right-0 mt-2 w-48 pixel-panel p-2 z-50">
+                          <div className="grid grid-cols-5 gap-1">
+                            {patterns.map((pattern) => (
+                              <button
+                                key={pattern}
+                                onClick={() => {
+                                  setSelectedPattern(pattern);
+                                  setShowPatternDropdown(false);
+                                }}
+                                className="p-2 hover:bg-slate-700 transition-colors text-xl"
+                              >
+                                {pattern}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
+                <button className="w-full pixel-button flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700">
+                  <Swords size={18} />
+                  PLAY NOW
+                </button>
               </div>
             </div>
 
