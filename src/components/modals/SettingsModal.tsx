@@ -197,204 +197,202 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        <div className="flex h-[70vh]">
-          {/* Left Side Tabs */}
-          <div className="pixel-panel p-1 w-48 flex flex-col border-r border-slate-800">
-            <button
-              onClick={() => setActiveTab('settings')}
-              className={`flex items-center gap-2 px-4 py-3 font-pixel text-sm transition-all ${
-                activeTab === 'settings'
-                  ? 'bg-blue-600 text-white'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-              }`}
-            >
-              <SettingsIcon size={18} />
-              Settings
-            </button>
-            <button
-              onClick={() => setActiveTab('keybinds')}
-              className={`flex items-center gap-2 px-4 py-3 font-pixel text-sm transition-all ${
-                activeTab === 'keybinds'
-                  ? 'bg-blue-600 text-white'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
-              }`}
-            >
-              <Keyboard size={18} />
-              Keybinds
-            </button>
-          </div>
+        {/* Top Tabs */}
+        <div className="pixel-panel p-1 flex border-b border-slate-800">
+          <button
+            onClick={() => setActiveTab('settings')}
+            className={`flex items-center gap-2 px-6 py-3 font-pixel text-sm transition-all ${
+              activeTab === 'settings'
+                ? 'bg-blue-600 text-white'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+            }`}
+          >
+            <SettingsIcon size={18} />
+            Settings
+          </button>
+          <button
+            onClick={() => setActiveTab('keybinds')}
+            className={`flex items-center gap-2 px-6 py-3 font-pixel text-sm transition-all ${
+              activeTab === 'keybinds'
+                ? 'bg-blue-600 text-white'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
+            }`}
+          >
+            <Keyboard size={18} />
+            Keybinds
+          </button>
+        </div>
 
-          {/* Content Area */}
-          <div className="flex-1 p-6 overflow-y-auto custom-scrollbar">
-            {activeTab === 'settings' && (
-              <div className="space-y-4">
-                <div className="pixel-panel p-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <Moon size={20} className="text-slate-300" />
-                      <div>
-                        <div className="font-pixel text-white">Dark Mode</div>
-                        <div className="text-sm text-slate-400">Toggle the site's appearance between light and dark themes</div>
-                      </div>
-                    </div>
-                    <button
-                      onClick={toggleTheme}
-                      className={`w-14 h-7 flex items-center rounded-full ${
-                        theme === 'dark' ? 'bg-blue-600' : 'bg-slate-600'
-                      } relative transition-colors duration-200`}
-                    >
-                      <div className={`w-5 h-5 bg-white rounded-full shadow-sm transform transition-transform duration-200 ${
-                        theme === 'dark' ? 'translate-x-7' : 'translate-x-1'
-                      }`} />
-                    </button>
-                  </div>
-                </div>
-
-                <div className="pixel-panel p-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <Smile size={20} className="text-slate-300" />
-                      <div>
-                        <div className="font-pixel text-white">Emojis</div>
-                        <div className="text-sm text-slate-400">Toggle whether emojis are shown in game</div>
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => setEmojis(!emojis)}
-                      className={`w-14 h-7 flex items-center rounded-full ${
-                        emojis ? 'bg-blue-600' : 'bg-slate-600'
-                      } relative transition-colors duration-200`}
-                    >
-                      <div className={`w-5 h-5 bg-white rounded-full shadow-sm transform transition-transform duration-200 ${
-                        emojis ? 'translate-x-7' : 'translate-x-1'
-                      }`} />
-                    </button>
-                  </div>
-                </div>
-
-                <div className="pixel-panel p-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <MousePointer size={20} className="text-slate-300" />
-                      <div>
-                        <div className="font-pixel text-white">Left Click to Open Menu</div>
-                        <div className="text-sm text-slate-400">
-                          When ON, left-click opens menu and sword button attacks.
-                        </div>
-                      </div>
-                    </div>
-                    <button
-                      onClick={() => setLeftClickMenu(!leftClickMenu)}
-                      className={`w-14 h-7 flex items-center rounded-full ${
-                        leftClickMenu ? 'bg-blue-600' : 'bg-slate-600'
-                      } relative transition-colors duration-200`}
-                    >
-                      <div className={`w-5 h-5 bg-white rounded-full shadow-sm transform transition-transform duration-200 ${
-                        leftClickMenu ? 'translate-x-7' : 'translate-x-1'
-                      }`} />
-                    </button>
-                  </div>
-                </div>
-
-                <div className="pixel-panel p-4">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Swords size={20} className="text-slate-300" />
+        {/* Content Area */}
+        <div className="p-6 h-[70vh] overflow-y-auto custom-scrollbar">
+          {activeTab === 'settings' && (
+            <div className="space-y-4">
+              <div className="pixel-panel p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Moon size={20} className="text-slate-300" />
                     <div>
-                      <div className="font-pixel text-white">Attack Ratio</div>
-                      <div className="text-sm text-slate-400">
-                        What percentage of your troops to send in an attack (1-100%)
-                      </div>
+                      <div className="font-pixel text-white">Dark Mode</div>
+                      <div className="text-sm text-slate-400">Toggle the site's appearance between light and dark themes</div>
                     </div>
                   </div>
-                  <input
-                    type="range"
-                    min="1"
-                    max="100"
-                    value={attackRatio}
-                    onChange={(e) => setAttackRatio(parseInt(e.target.value))}
-                    className="w-full h-2 rounded-none appearance-none cursor-pointer"
-                    style={{
-                      background: `linear-gradient(to right, #384d6f ${attackRatio}%, #1e293b ${attackRatio}%)`,
-                      borderRadius: '0.25rem',
-                    }}
-                  />
-                  <div className="text-center mt-2 font-pixel text-slate-400">{attackRatio}%</div>
-                </div>
-
-                <div className="pixel-panel p-4">
-                  <div className="flex items-center gap-3 mb-3">
-                    <Users size={20} className="text-slate-300" />
-                    <div>
-                      <div className="font-pixel text-white">Troops and Workers Ratio</div>
-                      <div className="text-sm text-slate-400">
-                        Adjust the balance between troops (for combat) and workers (for gold production) (1-100%)
-                      </div>
-                    </div>
-                  </div>
-                  <input
-                    type="range"
-                    min="1"
-                    max="100"
-                    value={troopsRatio}
-                    onChange={(e) => setTroopsRatio(parseInt(e.target.value))}
-                    className="w-full h-2 rounded-none appearance-none cursor-pointer"
-                    style={{
-                      background: `linear-gradient(to right, #384d6f ${troopsRatio}%, #1e293b ${troopsRatio}%)`,
-                      borderRadius: '0.25rem',
-                    }}
-                  />
-                  <div className="text-center mt-2 font-pixel text-slate-400">{troopsRatio}%</div>
+                  <button
+                    onClick={toggleTheme}
+                    className={`w-14 h-7 flex items-center rounded-full ${
+                      theme === 'dark' ? 'bg-blue-600' : 'bg-slate-600'
+                    } relative transition-colors duration-200`}
+                  >
+                    <div className={`w-5 h-5 bg-white rounded-full shadow-sm transform transition-transform duration-200 ${
+                      theme === 'dark' ? 'translate-x-7' : 'translate-x-1'
+                    }`} />
+                  </button>
                 </div>
               </div>
-            )}
 
-            {activeTab === 'keybinds' && (
-              <div className="space-y-4">
-                <div className="mb-6">
-                  <h3 className="font-pixel text-xl text-white mb-2">Keybinds</h3>
-                  <p className="text-sm text-slate-400">Click on a key to rebind it. Press the new key you want to assign.</p>
-                </div>
-                
-                {keybinds.map((keybind) => (
-                  <div key={keybind.action} className="pixel-panel p-4">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="flex-1">
-                        <div className="font-pixel text-white">{keybind.label}</div>
-                        <div className="text-sm text-slate-400">{keybind.description}</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <button
-                        className={`px-3 py-1 rounded font-pixel text-sm cursor-pointer transition-colors ${
-                          listeningFor === keybind.action
-                            ? 'bg-blue-600 text-white animate-pulse'
-                            : 'bg-slate-700 text-white hover:bg-slate-600'
-                        }`}
-                        onClick={() => setListeningFor(keybind.action)}
-                      >
-                        {listeningFor === keybind.action 
-                          ? 'Press a key...' 
-                          : displayKey(keybind.value || keybind.defaultKey)
-                        }
-                      </button>
-                      <button
-                        className="text-xs text-slate-400 hover:text-white border border-slate-500 px-2 py-0.5 rounded transition-colors duration-200"
-                        onClick={() => resetKeybind(keybind.action)}
-                      >
-                        Reset
-                      </button>
-                      <button
-                        className="text-xs text-slate-400 hover:text-white border border-slate-500 px-2 py-0.5 rounded transition-colors duration-200"
-                        onClick={() => unbindKey(keybind.action)}
-                      >
-                        Unbind
-                      </button>
+              <div className="pixel-panel p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Smile size={20} className="text-slate-300" />
+                    <div>
+                      <div className="font-pixel text-white">Emojis</div>
+                      <div className="text-sm text-slate-400">Toggle whether emojis are shown in game</div>
                     </div>
                   </div>
-                ))}
+                  <button
+                    onClick={() => setEmojis(!emojis)}
+                    className={`w-14 h-7 flex items-center rounded-full ${
+                      emojis ? 'bg-blue-600' : 'bg-slate-600'
+                    } relative transition-colors duration-200`}
+                  >
+                    <div className={`w-5 h-5 bg-white rounded-full shadow-sm transform transition-transform duration-200 ${
+                      emojis ? 'translate-x-7' : 'translate-x-1'
+                    }`} />
+                  </button>
+                </div>
               </div>
-            )}
-          </div>
+
+              <div className="pixel-panel p-4">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <MousePointer size={20} className="text-slate-300" />
+                    <div>
+                      <div className="font-pixel text-white">Left Click to Open Menu</div>
+                      <div className="text-sm text-slate-400">
+                        When ON, left-click opens menu and sword button attacks.
+                      </div>
+                    </div>
+                  </div>
+                  <button
+                    onClick={() => setLeftClickMenu(!leftClickMenu)}
+                    className={`w-14 h-7 flex items-center rounded-full ${
+                      leftClickMenu ? 'bg-blue-600' : 'bg-slate-600'
+                    } relative transition-colors duration-200`}
+                  >
+                    <div className={`w-5 h-5 bg-white rounded-full shadow-sm transform transition-transform duration-200 ${
+                      leftClickMenu ? 'translate-x-7' : 'translate-x-1'
+                    }`} />
+                  </button>
+                </div>
+              </div>
+
+              <div className="pixel-panel p-4">
+                <div className="flex items-center gap-3 mb-3">
+                  <Swords size={20} className="text-slate-300" />
+                  <div>
+                    <div className="font-pixel text-white">Attack Ratio</div>
+                    <div className="text-sm text-slate-400">
+                      What percentage of your troops to send in an attack (1-100%)
+                    </div>
+                  </div>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="100"
+                  value={attackRatio}
+                  onChange={(e) => setAttackRatio(parseInt(e.target.value))}
+                  className="w-full h-2 rounded-none appearance-none cursor-pointer"
+                  style={{
+                    background: `linear-gradient(to right, #384d6f ${attackRatio}%, #1e293b ${attackRatio}%)`,
+                    borderRadius: '0.25rem',
+                  }}
+                />
+                <div className="text-center mt-2 font-pixel text-slate-400">{attackRatio}%</div>
+              </div>
+
+              <div className="pixel-panel p-4">
+                <div className="flex items-center gap-3 mb-3">
+                  <Users size={20} className="text-slate-300" />
+                  <div>
+                    <div className="font-pixel text-white">Troops and Workers Ratio</div>
+                    <div className="text-sm text-slate-400">
+                      Adjust the balance between troops (for combat) and workers (for gold production) (1-100%)
+                    </div>
+                  </div>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="100"
+                  value={troopsRatio}
+                  onChange={(e) => setTroopsRatio(parseInt(e.target.value))}
+                  className="w-full h-2 rounded-none appearance-none cursor-pointer"
+                  style={{
+                    background: `linear-gradient(to right, #384d6f ${troopsRatio}%, #1e293b ${troopsRatio}%)`,
+                    borderRadius: '0.25rem',
+                  }}
+                />
+                <div className="text-center mt-2 font-pixel text-slate-400">{troopsRatio}%</div>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'keybinds' && (
+            <div className="space-y-4">
+              <div className="mb-6">
+                <h3 className="font-pixel text-xl text-white mb-2">Keybinds</h3>
+                <p className="text-sm text-slate-400">Click on a key to rebind it. Press the new key you want to assign.</p>
+              </div>
+              
+              {keybinds.map((keybind) => (
+                <div key={keybind.action} className="pixel-panel p-4">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="flex-1">
+                      <div className="font-pixel text-white">{keybind.label}</div>
+                      <div className="text-sm text-slate-400">{keybind.description}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button
+                      className={`px-3 py-1 rounded font-pixel text-sm cursor-pointer transition-colors ${
+                        listeningFor === keybind.action
+                          ? 'bg-blue-600 text-white animate-pulse'
+                          : 'bg-slate-700 text-white hover:bg-slate-600'
+                      }`}
+                      onClick={() => setListeningFor(keybind.action)}
+                    >
+                      {listeningFor === keybind.action 
+                        ? 'Press a key...' 
+                        : displayKey(keybind.value || keybind.defaultKey)
+                      }
+                    </button>
+                    <button
+                      className="text-xs text-slate-400 hover:text-white border border-slate-500 px-2 py-0.5 rounded transition-colors duration-200"
+                      onClick={() => resetKeybind(keybind.action)}
+                    >
+                      Reset
+                    </button>
+                    <button
+                      className="text-xs text-slate-400 hover:text-white border border-slate-500 px-2 py-0.5 rounded transition-colors duration-200"
+                      onClick={() => unbindKey(keybind.action)}
+                    >
+                      Unbind
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
