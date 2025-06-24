@@ -197,11 +197,11 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        {/* Top Tabs */}
+        {/* Top Tabs - Equal Width */}
         <div className="pixel-panel p-1 flex border-b border-slate-800">
           <button
             onClick={() => setActiveTab('settings')}
-            className={`flex items-center gap-2 px-6 py-3 font-pixel text-sm transition-all ${
+            className={`flex-1 flex items-center justify-center gap-2 px-6 py-3 font-pixel text-sm transition-all ${
               activeTab === 'settings'
                 ? 'bg-blue-600 text-white'
                 : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
@@ -212,7 +212,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose }) => {
           </button>
           <button
             onClick={() => setActiveTab('keybinds')}
-            className={`flex items-center gap-2 px-6 py-3 font-pixel text-sm transition-all ${
+            className={`flex-1 flex items-center justify-center gap-2 px-6 py-3 font-pixel text-sm transition-all ${
               activeTab === 'keybinds'
                 ? 'bg-blue-600 text-white'
                 : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
