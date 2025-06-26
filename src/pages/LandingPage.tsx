@@ -172,7 +172,7 @@ const LandingPage: React.FC = () => {
                         }}
                         className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600"
                       >
-                        <span className="text-xl">{selectedFlag}</span>
+                        <Flag size={16} className="text-white" />
                       </button>
                       {showFlagDropdown && (
                         <div className="absolute top-full right-0 mt-2 w-48 pixel-panel p-2 z-50">
@@ -203,7 +203,7 @@ const LandingPage: React.FC = () => {
                         }}
                         className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600"
                       >
-                        <span className="text-xl">{selectedPattern}</span>
+                        <Palette size={16} className="text-white" />
                       </button>
                       {showPatternDropdown && (
                         <div className="absolute top-full right-0 mt-2 w-48 pixel-panel p-2 z-50">
