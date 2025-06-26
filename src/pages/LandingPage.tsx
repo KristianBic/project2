@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings, User, Mail, LogIn, Users, Swords, BookOpen, Languages, Bell, Flag, Palette } from 'lucide-react';
+import { Settings, User, Mail, LogIn, Users, Swords, BookOpen, Languages, Bell, Globe, Palette } from 'lucide-react';
 import { useTheme } from '../components/theme/ThemeProvider';
 import Logo from '../components/ui/Logo';
 import LoginModal from '../components/modals/LoginModal';
@@ -172,7 +172,7 @@ const LandingPage: React.FC = () => {
                         }}
                         className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600"
                       >
-                        <Flag size={16} className="text-white" />
+                        <Globe size={16} className="text-white" />
                       </button>
                       {showFlagDropdown && (
                         <div className="absolute top-full right-0 mt-2 w-48 pixel-panel p-2 z-50">
