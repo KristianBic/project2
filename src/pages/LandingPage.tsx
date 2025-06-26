@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings, User, Mail, LogIn, Users, Swords, BookOpen, Languages, Bell, Globe, Palette } from 'lucide-react';
+import { Settings, User, Mail, LogIn, Users, Swords, BookOpen, Languages, Bell, Shield, Star } from 'lucide-react';
 import { useTheme } from '../components/theme/ThemeProvider';
 import Logo from '../components/ui/Logo';
 import LoginModal from '../components/modals/LoginModal';
@@ -163,7 +163,7 @@ const LandingPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex gap-1">
-                    {/* Nation/Region Selection with Globe */}
+                    {/* Nation Shield Selection */}
                     <div className="relative">
                       <button
                         onClick={() => {
@@ -174,8 +174,10 @@ const LandingPage: React.FC = () => {
                         title="Select Nation"
                       >
                         <div className="relative">
-                          <Globe size={20} className="text-blue-400 group-hover:text-blue-300 transition-colors" />
-                          <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-gradient-to-br from-red-500 to-blue-500 border border-white"></div>
+                          <Shield size={20} className="text-red-400 group-hover:text-red-300 transition-colors" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                          </div>
                         </div>
                       </button>
                       {showFlagDropdown && (
@@ -198,7 +200,7 @@ const LandingPage: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Military Insignia/Rank Selection */}
+                    {/* Military Star/Medal Selection */}
                     <div className="relative">
                       <button
                         onClick={() => {
@@ -206,14 +208,13 @@ const LandingPage: React.FC = () => {
                           setShowFlagDropdown(false);
                         }}
                         className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 relative group"
-                        title="Select Military Insignia"
+                        title="Select Military Decoration"
                       >
-                        {/* Military rank chevron design */}
-                        <div className="relative flex flex-col items-center">
-                          <div className="w-4 h-1 bg-yellow-400 transform rotate-45 origin-left"></div>
-                          <div className="w-4 h-1 bg-yellow-400 transform -rotate-45 origin-left -mt-0.5"></div>
-                          <div className="w-4 h-1 bg-yellow-400 transform rotate-45 origin-left -mt-0.5"></div>
-                          <div className="w-4 h-1 bg-yellow-400 transform -rotate-45 origin-left -mt-0.5"></div>
+                        <div className="relative">
+                          <Star size={20} className="text-yellow-400 group-hover:text-yellow-300 transition-colors fill-current" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-1 h-1 bg-red-500 rounded-full"></div>
+                          </div>
                         </div>
                       </button>
                       {showPatternDropdown && (
