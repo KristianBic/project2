@@ -163,16 +163,25 @@ const LandingPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex gap-1">
-                    {/* Flag Selection */}
+                    {/* Flag Selection with Custom Design */}
                     <div className="relative">
                       <button
                         onClick={() => {
                           setShowFlagDropdown(!showFlagDropdown);
                           setShowPatternDropdown(false);
                         }}
-                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600"
+                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 relative overflow-hidden"
                       >
-                        <Globe size={16} className="text-white" />
+                        {/* Custom flag pole design */}
+                        <div className="relative flex items-center">
+                          <div className="w-0.5 h-6 bg-slate-400 mr-1"></div>
+                          <div className="w-4 h-3 bg-gradient-to-r from-red-500 via-white to-blue-500 border border-slate-300" 
+                               style={{ 
+                                 backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12'%3E%3Crect width='16' height='4' fill='%23ff0000'/%3E%3Crect y='4' width='16' height='4' fill='%23ffffff'/%3E%3Crect y='8' width='16' height='4' fill='%230000ff'/%3E%3C/svg%3E")`,
+                                 backgroundSize: 'cover'
+                               }}>
+                          </div>
+                        </div>
                       </button>
                       {showFlagDropdown && (
                         <div className="absolute top-full right-0 mt-2 w-48 pixel-panel p-2 z-50">
@@ -194,7 +203,7 @@ const LandingPage: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Pattern Selection */}
+                    {/* Pattern Selection with Shield Design */}
                     <div className="relative">
                       <button
                         onClick={() => {
@@ -203,7 +212,18 @@ const LandingPage: React.FC = () => {
                         }}
                         className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600"
                       >
-                        <Palette size={16} className="text-white" />
+                        {/* Custom shield/heraldry design */}
+                        <div className="relative">
+                          <svg width="16" height="18" viewBox="0 0 16 18" className="text-yellow-400">
+                            <path 
+                              d="M8 0L2 3v6c0 3.5 2.5 7 6 9 3.5-2 6-5.5 6-9V3L8 0z" 
+                              fill="currentColor" 
+                              stroke="#64748b" 
+                              strokeWidth="1"
+                            />
+                            <text x="8" y="11" textAnchor="middle" fontSize="8" fill="#1e293b">⚜</text>
+                          </svg>
+                        </div>
                       </button>
                       {showPatternDropdown && (
                         <div className="absolute top-full right-0 mt-2 w-48 pixel-panel p-2 z-50">
