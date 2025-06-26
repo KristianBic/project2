@@ -28,8 +28,36 @@ const LandingPage: React.FC = () => {
   const [selectedFlag, setSelectedFlag] = useState('🇺🇸');
   const [selectedPattern, setSelectedPattern] = useState('⚜️');
 
-  const flags = ['🇺🇸', '🇬🇧', '🇫🇷', '🇩🇪', '🇮🇹', '🇪🇸', '🇷🇺', '🇯🇵', '🇰🇷', '🇨🇳'];
-  const patterns = ['⚜️', '☘️', '✴️', '❇️', '✳️', '〽️', '🔰', '🎴', '🔱', '📛'];
+  // Nation flag images
+  const flagImages = [
+    { code: 'us', name: 'United States', url: 'https://flagcdn.com/w40/us.png' },
+    { code: 'gb', name: 'United Kingdom', url: 'https://flagcdn.com/w40/gb.png' },
+    { code: 'fr', name: 'France', url: 'https://flagcdn.com/w40/fr.png' },
+    { code: 'de', name: 'Germany', url: 'https://flagcdn.com/w40/de.png' },
+    { code: 'it', name: 'Italy', url: 'https://flagcdn.com/w40/it.png' },
+    { code: 'es', name: 'Spain', url: 'https://flagcdn.com/w40/es.png' },
+    { code: 'ru', name: 'Russia', url: 'https://flagcdn.com/w40/ru.png' },
+    { code: 'jp', name: 'Japan', url: 'https://flagcdn.com/w40/jp.png' },
+    { code: 'kr', name: 'South Korea', url: 'https://flagcdn.com/w40/kr.png' },
+    { code: 'cn', name: 'China', url: 'https://flagcdn.com/w40/cn.png' },
+  ];
+
+  // Military insignia/decoration images
+  const insigniaImages = [
+    { id: 'star', name: 'Star Medal', url: 'https://images.pexels.com/photos/8828462/pexels-photo-8828462.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
+    { id: 'cross', name: 'Cross Medal', url: 'https://images.pexels.com/photos/8828463/pexels-photo-8828463.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
+    { id: 'shield', name: 'Shield Badge', url: 'https://images.pexels.com/photos/8828464/pexels-photo-8828464.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
+    { id: 'eagle', name: 'Eagle Insignia', url: 'https://images.pexels.com/photos/8828465/pexels-photo-8828465.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
+    { id: 'crown', name: 'Crown Badge', url: 'https://images.pexels.com/photos/8828466/pexels-photo-8828466.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
+    { id: 'sword', name: 'Sword Medal', url: 'https://images.pexels.com/photos/8828467/pexels-photo-8828467.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
+    { id: 'anchor', name: 'Naval Badge', url: 'https://images.pexels.com/photos/8828468/pexels-photo-8828468.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
+    { id: 'wings', name: 'Air Force Wings', url: 'https://images.pexels.com/photos/8828469/pexels-photo-8828469.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
+    { id: 'ribbon', name: 'Service Ribbon', url: 'https://images.pexels.com/photos/8828470/pexels-photo-8828470.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
+    { id: 'medal', name: 'Honor Medal', url: 'https://images.pexels.com/photos/8828471/pexels-photo-8828471.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
+  ];
+
+  const [selectedFlagImage, setSelectedFlagImage] = useState(flagImages[0]);
+  const [selectedInsignia, setSelectedInsignia] = useState(insigniaImages[0]);
 
   const news = [
     {
@@ -163,36 +191,44 @@ const LandingPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex gap-1">
-                    {/* Nation Shield Selection */}
+                    {/* Nation Flag Selection */}
                     <div className="relative">
                       <button
                         onClick={() => {
                           setShowFlagDropdown(!showFlagDropdown);
                           setShowPatternDropdown(false);
                         }}
-                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 relative group"
-                        title="Select Nation"
+                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 group"
+                        title={`Select Nation - ${selectedFlagImage.name}`}
                       >
-                        <div className="relative">
-                          <Shield size={20} className="text-red-400 group-hover:text-red-300 transition-colors" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-2 h-2 bg-white rounded-full"></div>
-                          </div>
+                        <div className="w-6 h-4 rounded-sm overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors">
+                          <img 
+                            src={selectedFlagImage.url} 
+                            alt={selectedFlagImage.name}
+                            className="w-full h-full object-cover"
+                          />
                         </div>
                       </button>
                       {showFlagDropdown && (
-                        <div className="absolute top-full right-0 mt-2 w-48 pixel-panel p-2 z-50">
-                          <div className="grid grid-cols-5 gap-1">
-                            {flags.map((flag) => (
+                        <div className="absolute top-full right-0 mt-2 w-64 pixel-panel p-3 z-50">
+                          <div className="grid grid-cols-5 gap-2">
+                            {flagImages.map((flag) => (
                               <button
-                                key={flag}
+                                key={flag.code}
                                 onClick={() => {
-                                  setSelectedFlag(flag);
+                                  setSelectedFlagImage(flag);
                                   setShowFlagDropdown(false);
                                 }}
-                                className="p-2 hover:bg-slate-700 transition-colors text-xl"
+                                className="p-2 hover:bg-slate-700 transition-colors rounded group"
+                                title={flag.name}
                               >
-                                {flag}
+                                <div className="w-8 h-6 rounded-sm overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors">
+                                  <img 
+                                    src={flag.url} 
+                                    alt={flag.name}
+                                    className="w-full h-full object-cover"
+                                  />
+                                </div>
                               </button>
                             ))}
                           </div>
@@ -200,36 +236,56 @@ const LandingPage: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Military Star/Medal Selection */}
+                    {/* Military Insignia Selection */}
                     <div className="relative">
                       <button
                         onClick={() => {
                           setShowPatternDropdown(!showPatternDropdown);
                           setShowFlagDropdown(false);
                         }}
-                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 relative group"
-                        title="Select Military Decoration"
+                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 group"
+                        title={`Select Military Insignia - ${selectedInsignia.name}`}
                       >
-                        <div className="relative">
-                          <Star size={20} className="text-yellow-400 group-hover:text-yellow-300 transition-colors fill-current" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-1 h-1 bg-red-500 rounded-full"></div>
-                          </div>
+                        <div className="w-6 h-6 rounded-full overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors bg-slate-800">
+                          <img 
+                            src={selectedInsignia.url} 
+                            alt={selectedInsignia.name}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              // Fallback to a simple colored circle if image fails to load
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = 'none';
+                              target.parentElement!.style.background = 'linear-gradient(45deg, #fbbf24, #f59e0b)';
+                            }}
+                          />
                         </div>
                       </button>
                       {showPatternDropdown && (
-                        <div className="absolute top-full right-0 mt-2 w-48 pixel-panel p-2 z-50">
-                          <div className="grid grid-cols-5 gap-1">
-                            {patterns.map((pattern) => (
+                        <div className="absolute top-full right-0 mt-2 w-64 pixel-panel p-3 z-50">
+                          <div className="grid grid-cols-5 gap-2">
+                            {insigniaImages.map((insignia) => (
                               <button
-                                key={pattern}
+                                key={insignia.id}
                                 onClick={() => {
-                                  setSelectedPattern(pattern);
+                                  setSelectedInsignia(insignia);
                                   setShowPatternDropdown(false);
                                 }}
-                                className="p-2 hover:bg-slate-700 transition-colors text-xl"
+                                className="p-2 hover:bg-slate-700 transition-colors rounded group"
+                                title={insignia.name}
                               >
-                                {pattern}
+                                <div className="w-8 h-8 rounded-full overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors bg-slate-800">
+                                  <img 
+                                    src={insignia.url} 
+                                    alt={insignia.name}
+                                    className="w-full h-full object-cover"
+                                    onError={(e) => {
+                                      // Fallback to a simple colored circle if image fails to load
+                                      const target = e.target as HTMLImageElement;
+                                      target.style.display = 'none';
+                                      target.parentElement!.style.background = 'linear-gradient(45deg, #fbbf24, #f59e0b)';
+                                    }}
+                                  />
+                                </div>
                               </button>
                             ))}
                           </div>
