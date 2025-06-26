@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings, User, Mail, LogIn, Users, Swords, BookOpen, Languages, Bell, Shield, Star, Flag } from 'lucide-react';
+import { Settings, User, Mail, LogIn, Users, Swords, BookOpen, Languages, Bell, Shield, Star, Flag, Plus } from 'lucide-react';
 import { useTheme } from '../components/theme/ThemeProvider';
 import Logo from '../components/ui/Logo';
 import LoginModal from '../components/modals/LoginModal';
@@ -188,19 +188,23 @@ const LandingPage: React.FC = () => {
                       />
                     </div>
                   </div>
-                  <div className="flex gap-1">
-                    {/* Nation Flag Selection */}
+                  <div className="flex gap-2">
+                    {/* Nation Flag Selection - Much More Visible */}
                     <div className="relative">
                       <button
                         onClick={() => {
                           setShowFlagDropdown(!showFlagDropdown);
                           setShowPatternDropdown(false);
                         }}
-                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 group"
+                        className={`h-full px-4 py-3 flex items-center justify-center min-w-[64px] transition-all duration-200 group ${
+                          selectedFlagImage 
+                            ? 'pixel-button bg-blue-600 hover:bg-blue-700' 
+                            : 'bg-gradient-to-br from-blue-500/20 to-blue-600/30 border-2 border-blue-400/50 hover:border-blue-300 hover:from-blue-500/30 hover:to-blue-600/40 backdrop-blur-sm'
+                        }`}
                         title="Select Nation Flag"
                       >
                         {selectedFlagImage ? (
-                          <div className="w-6 h-4 rounded-sm overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors">
+                          <div className="w-8 h-6 rounded-sm overflow-hidden border border-white/20 shadow-lg">
                             <img 
                               src={selectedFlagImage.url} 
                               alt={selectedFlagImage.name}
@@ -208,13 +212,18 @@ const LandingPage: React.FC = () => {
                             />
                           </div>
                         ) : (
-                          <div className="w-6 h-4 rounded-sm border-2 border-dashed border-slate-500 group-hover:border-slate-400 transition-colors flex items-center justify-center bg-slate-800/50">
-                            <Flag size={12} className="text-slate-400 group-hover:text-slate-300 transition-colors" />
+                          <div className="flex flex-col items-center gap-1">
+                            <div className="w-8 h-6 rounded-sm border-2 border-dashed border-blue-300 bg-blue-500/20 flex items-center justify-center relative overflow-hidden">
+                              <Flag size={14} className="text-blue-300" />
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
+                            </div>
+                            <div className="text-[8px] font-pixel text-blue-300 leading-none">FLAG</div>
                           </div>
                         )}
                       </button>
                       {showFlagDropdown && (
-                        <div className="absolute top-full right-0 mt-2 w-64 pixel-panel p-3 z-50">
+                        <div className="absolute top-full right-0 mt-2 w-64 pixel-panel p-3 z-50 shadow-2xl">
+                          <div className="text-xs font-pixel text-white mb-2 text-center">SELECT NATION FLAG</div>
                           <div className="grid grid-cols-5 gap-2">
                             {flagImages.map((flag) => (
                               <button
@@ -226,7 +235,7 @@ const LandingPage: React.FC = () => {
                                 className="p-2 hover:bg-slate-700 transition-colors rounded group"
                                 title={flag.name}
                               >
-                                <div className="w-8 h-6 rounded-sm overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors">
+                                <div className="w-8 h-6 rounded-sm overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors shadow-md">
                                   <img 
                                     src={flag.url} 
                                     alt={flag.name}
@@ -240,24 +249,27 @@ const LandingPage: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Military Insignia Selection */}
+                    {/* Military Insignia Selection - Much More Visible */}
                     <div className="relative">
                       <button
                         onClick={() => {
                           setShowPatternDropdown(!showPatternDropdown);
                           setShowFlagDropdown(false);
                         }}
-                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 group"
+                        className={`h-full px-4 py-3 flex items-center justify-center min-w-[64px] transition-all duration-200 group ${
+                          selectedInsignia 
+                            ? 'pixel-button bg-orange-600 hover:bg-orange-700' 
+                            : 'bg-gradient-to-br from-orange-500/20 to-orange-600/30 border-2 border-orange-400/50 hover:border-orange-300 hover:from-orange-500/30 hover:to-orange-600/40 backdrop-blur-sm'
+                        }`}
                         title="Select Military Insignia"
                       >
                         {selectedInsignia ? (
-                          <div className="w-6 h-6 rounded-full overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors bg-slate-800">
+                          <div className="w-8 h-8 rounded-full overflow-hidden border border-white/20 shadow-lg bg-slate-800">
                             <img 
                               src={selectedInsignia.url} 
                               alt={selectedInsignia.name}
                               className="w-full h-full object-cover"
                               onError={(e) => {
-                                // Fallback to a simple colored circle if image fails to load
                                 const target = e.target as HTMLImageElement;
                                 target.style.display = 'none';
                                 target.parentElement!.style.background = 'linear-gradient(45deg, #fbbf24, #f59e0b)';
@@ -265,13 +277,18 @@ const LandingPage: React.FC = () => {
                             />
                           </div>
                         ) : (
-                          <div className="w-6 h-6 rounded-full border-2 border-dashed border-slate-500 group-hover:border-slate-400 transition-colors flex items-center justify-center bg-slate-800/50">
-                            <Star size={12} className="text-slate-400 group-hover:text-slate-300 transition-colors" />
+                          <div className="flex flex-col items-center gap-1">
+                            <div className="w-8 h-8 rounded-full border-2 border-dashed border-orange-300 bg-orange-500/20 flex items-center justify-center relative overflow-hidden">
+                              <Star size={14} className="text-orange-300" />
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
+                            </div>
+                            <div className="text-[8px] font-pixel text-orange-300 leading-none">RANK</div>
                           </div>
                         )}
                       </button>
                       {showPatternDropdown && (
-                        <div className="absolute top-full right-0 mt-2 w-64 pixel-panel p-3 z-50">
+                        <div className="absolute top-full right-0 mt-2 w-64 pixel-panel p-3 z-50 shadow-2xl">
+                          <div className="text-xs font-pixel text-white mb-2 text-center">SELECT MILITARY INSIGNIA</div>
                           <div className="grid grid-cols-5 gap-2">
                             {insigniaImages.map((insignia) => (
                               <button
@@ -283,13 +300,12 @@ const LandingPage: React.FC = () => {
                                 className="p-2 hover:bg-slate-700 transition-colors rounded group"
                                 title={insignia.name}
                               >
-                                <div className="w-8 h-8 rounded-full overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors bg-slate-800">
+                                <div className="w-8 h-8 rounded-full overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors bg-slate-800 shadow-md">
                                   <img 
                                     src={insignia.url} 
                                     alt={insignia.name}
                                     className="w-full h-full object-cover"
                                     onError={(e) => {
-                                      // Fallback to a simple colored circle if image fails to load
                                       const target = e.target as HTMLImageElement;
                                       target.style.display = 'none';
                                       target.parentElement!.style.background = 'linear-gradient(45deg, #fbbf24, #f59e0b)';
