@@ -163,24 +163,19 @@ const LandingPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex gap-1">
-                    {/* Flag Selection with Custom Design */}
+                    {/* Nation/Region Selection with Globe */}
                     <div className="relative">
                       <button
                         onClick={() => {
                           setShowFlagDropdown(!showFlagDropdown);
                           setShowPatternDropdown(false);
                         }}
-                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 relative overflow-hidden"
+                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 relative group"
+                        title="Select Nation"
                       >
-                        {/* Custom flag pole design */}
-                        <div className="relative flex items-center">
-                          <div className="w-0.5 h-6 bg-slate-400 mr-1"></div>
-                          <div className="w-4 h-3 bg-gradient-to-r from-red-500 via-white to-blue-500 border border-slate-300" 
-                               style={{ 
-                                 backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='12' viewBox='0 0 16 12'%3E%3Crect width='16' height='4' fill='%23ff0000'/%3E%3Crect y='4' width='16' height='4' fill='%23ffffff'/%3E%3Crect y='8' width='16' height='4' fill='%230000ff'/%3E%3C/svg%3E")`,
-                                 backgroundSize: 'cover'
-                               }}>
-                          </div>
+                        <div className="relative">
+                          <Globe size={20} className="text-blue-400 group-hover:text-blue-300 transition-colors" />
+                          <div className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-gradient-to-br from-red-500 to-blue-500 border border-white"></div>
                         </div>
                       </button>
                       {showFlagDropdown && (
@@ -203,26 +198,22 @@ const LandingPage: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Pattern Selection with Shield Design */}
+                    {/* Military Insignia/Rank Selection */}
                     <div className="relative">
                       <button
                         onClick={() => {
                           setShowPatternDropdown(!showPatternDropdown);
                           setShowFlagDropdown(false);
                         }}
-                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600"
+                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 relative group"
+                        title="Select Military Insignia"
                       >
-                        {/* Custom shield/heraldry design */}
-                        <div className="relative">
-                          <svg width="16" height="18" viewBox="0 0 16 18" className="text-yellow-400">
-                            <path 
-                              d="M8 0L2 3v6c0 3.5 2.5 7 6 9 3.5-2 6-5.5 6-9V3L8 0z" 
-                              fill="currentColor" 
-                              stroke="#64748b" 
-                              strokeWidth="1"
-                            />
-                            <text x="8" y="11" textAnchor="middle" fontSize="8" fill="#1e293b">⚜</text>
-                          </svg>
+                        {/* Military rank chevron design */}
+                        <div className="relative flex flex-col items-center">
+                          <div className="w-4 h-1 bg-yellow-400 transform rotate-45 origin-left"></div>
+                          <div className="w-4 h-1 bg-yellow-400 transform -rotate-45 origin-left -mt-0.5"></div>
+                          <div className="w-4 h-1 bg-yellow-400 transform rotate-45 origin-left -mt-0.5"></div>
+                          <div className="w-4 h-1 bg-yellow-400 transform -rotate-45 origin-left -mt-0.5"></div>
                         </div>
                       </button>
                       {showPatternDropdown && (
