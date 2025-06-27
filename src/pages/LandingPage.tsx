@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings, User, Mail, LogIn, Users, Swords, BookOpen, Languages, Bell, Shield, Star, Flag, Plus } from 'lucide-react';
+import { Settings, User, Mail, LogIn, Users, Swords, BookOpen, Languages, Bell, Shield, Star, Flag } from 'lucide-react';
 import { useTheme } from '../components/theme/ThemeProvider';
 import Logo from '../components/ui/Logo';
 import LoginModal from '../components/modals/LoginModal';
@@ -25,47 +25,33 @@ const LandingPage: React.FC = () => {
     description: string;
   }>(null);
   const [username, setUsername] = useState('');
+  const [selectedFlag, setSelectedFlag] = useState('🇺🇸');
+  const [selectedPattern, setSelectedPattern] = useState('⚜️');
 
-  // Nation flag images
-  const flagImages = [
-    { code: 'us', name: 'United States', url: 'https://flagcdn.com/w40/us.png' },
-    { code: 'gb', name: 'United Kingdom', url: 'https://flagcdn.com/w40/gb.png' },
-    { code: 'fr', name: 'France', url: 'https://flagcdn.com/w40/fr.png' },
-    { code: 'de', name: 'Germany', url: 'https://flagcdn.com/w40/de.png' },
-    { code: 'it', name: 'Italy', url: 'https://flagcdn.com/w40/it.png' },
-    { code: 'es', name: 'Spain', url: 'https://flagcdn.com/w40/es.png' },
-    { code: 'ru', name: 'Russia', url: 'https://flagcdn.com/w40/ru.png' },
-    { code: 'jp', name: 'Japan', url: 'https://flagcdn.com/w40/jp.png' },
-    { code: 'kr', name: 'South Korea', url: 'https://flagcdn.com/w40/kr.png' },
-    { code: 'cn', name: 'China', url: 'https://flagcdn.com/w40/cn.png' },
-    { code: 'ca', name: 'Canada', url: 'https://flagcdn.com/w40/ca.png' },
-    { code: 'au', name: 'Australia', url: 'https://flagcdn.com/w40/au.png' },
-    { code: 'br', name: 'Brazil', url: 'https://flagcdn.com/w40/br.png' },
-    { code: 'in', name: 'India', url: 'https://flagcdn.com/w40/in.png' },
-    { code: 'mx', name: 'Mexico', url: 'https://flagcdn.com/w40/mx.png' },
-    { code: 'nl', name: 'Netherlands', url: 'https://flagcdn.com/w40/nl.png' },
-    { code: 'se', name: 'Sweden', url: 'https://flagcdn.com/w40/se.png' },
-    { code: 'no', name: 'Norway', url: 'https://flagcdn.com/w40/no.png' },
-    { code: 'pl', name: 'Poland', url: 'https://flagcdn.com/w40/pl.png' },
-    { code: 'tr', name: 'Turkey', url: 'https://flagcdn.com/w40/tr.png' },
+  const flags = [
+    { emoji: '🇺🇸', name: 'United States' },
+    { emoji: '🇬🇧', name: 'United Kingdom' },
+    { emoji: '🇫🇷', name: 'France' },
+    { emoji: '🇩🇪', name: 'Germany' },
+    { emoji: '🇮🇹', name: 'Italy' },
+    { emoji: '🇪🇸', name: 'Spain' },
+    { emoji: '🇷🇺', name: 'Russia' },
+    { emoji: '🇯🇵', name: 'Japan' },
+    { emoji: '🇰🇷', name: 'South Korea' },
+    { emoji: '🇨🇳', name: 'China' },
+    { emoji: '🇨🇦', name: 'Canada' },
+    { emoji: '🇦🇺', name: 'Australia' },
+    { emoji: '🇧🇷', name: 'Brazil' },
+    { emoji: '🇮🇳', name: 'India' },
+    { emoji: '🇲🇽', name: 'Mexico' },
+    { emoji: '🇳🇱', name: 'Netherlands' },
+    { emoji: '🇸🇪', name: 'Sweden' },
+    { emoji: '🇳🇴', name: 'Norway' },
+    { emoji: '🇵🇱', name: 'Poland' },
+    { emoji: '🇹🇷', name: 'Turkey' }
   ];
-
-  // Military insignia/decoration images
-  const insigniaImages = [
-    { id: 'star', name: 'Star Medal', url: 'https://images.pexels.com/photos/8828462/pexels-photo-8828462.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
-    { id: 'cross', name: 'Cross Medal', url: 'https://images.pexels.com/photos/8828463/pexels-photo-8828463.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
-    { id: 'shield', name: 'Shield Badge', url: 'https://images.pexels.com/photos/8828464/pexels-photo-8828464.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
-    { id: 'eagle', name: 'Eagle Insignia', url: 'https://images.pexels.com/photos/8828465/pexels-photo-8828465.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
-    { id: 'crown', name: 'Crown Badge', url: 'https://images.pexels.com/photos/8828466/pexels-photo-8828466.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
-    { id: 'sword', name: 'Sword Medal', url: 'https://images.pexels.com/photos/8828467/pexels-photo-8828467.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
-    { id: 'anchor', name: 'Naval Badge', url: 'https://images.pexels.com/photos/8828468/pexels-photo-8828468.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
-    { id: 'wings', name: 'Air Force Wings', url: 'https://images.pexels.com/photos/8828469/pexels-photo-8828469.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
-    { id: 'ribbon', name: 'Service Ribbon', url: 'https://images.pexels.com/photos/8828470/pexels-photo-8828470.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
-    { id: 'medal', name: 'Honor Medal', url: 'https://images.pexels.com/photos/8828471/pexels-photo-8828471.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
-  ];
-
-  const [selectedFlagImage, setSelectedFlagImage] = useState<typeof flagImages[0] | null>(null);
-  const [selectedInsignia, setSelectedInsignia] = useState<typeof insigniaImages[0] | null>(null);
+  
+  const patterns = ['⚜️', '☘️', '✴️', '❇️', '✳️', '〽️', '🔰', '🎴', '🔱', '📛'];
 
   const news = [
     {
@@ -198,60 +184,40 @@ const LandingPage: React.FC = () => {
                       />
                     </div>
                   </div>
-                  <div className="flex gap-2">
-                    {/* Nation Flag Selection - Refined */}
+                  <div className="flex gap-1">
+                    {/* Nation Flag Selection */}
                     <div className="relative">
                       <button
                         onClick={() => {
                           setShowFlagDropdown(!showFlagDropdown);
                           setShowPatternDropdown(false);
                         }}
-                        className={`h-full px-3 py-3 flex items-center justify-center min-w-[52px] transition-all duration-200 group ${
-                          selectedFlagImage 
-                            ? 'pixel-button bg-blue-600 hover:bg-blue-700' 
-                            : 'bg-gradient-to-br from-blue-500/20 to-blue-600/30 border border-blue-400/50 hover:border-blue-300 hover:from-blue-500/30 hover:to-blue-600/40 backdrop-blur-sm'
-                        }`}
+                        className="h-full pixel-button bg-blue-600 hover:bg-blue-700 px-3 flex items-center justify-center min-w-[48px] relative group"
                         title="Select Nation Flag"
                       >
-                        {selectedFlagImage ? (
-                          <div className="w-8 h-6 rounded-sm overflow-hidden border border-white/20 shadow-lg">
-                            <img 
-                              src={selectedFlagImage.url} 
-                              alt={selectedFlagImage.name}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        ) : (
-                          <div className="flex flex-col items-center gap-1">
-                            <div className="w-8 h-6 rounded-sm bg-blue-500/20 flex items-center justify-center relative overflow-hidden">
-                              <Flag size={16} className="text-blue-300" />
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
-                            </div>
-                            <div className="text-[8px] font-pixel text-blue-300 leading-none">FLAG</div>
-                          </div>
-                        )}
+                        <Flag size={18} className="text-white" />
+                        <div className="absolute -top-1 -right-1 text-xs">
+                          {selectedFlag}
+                        </div>
                       </button>
                       {showFlagDropdown && (
-                        <div className="absolute top-full right-0 mt-2 w-64 pixel-panel p-3 z-50 shadow-2xl">
-                          <div className="text-xs font-pixel text-white mb-2 text-center">SELECT NATION FLAG</div>
-                          <div className="grid grid-cols-5 gap-2">
-                            {flagImages.map((flag) => (
+                        <div className="absolute top-full right-0 mt-2 w-72 pixel-panel p-4 z-50 shadow-2xl">
+                          <div className="text-xs font-pixel text-white mb-3 text-center">SELECT NATION FLAG</div>
+                          <div className="grid grid-cols-5 gap-2 max-h-64 overflow-y-auto custom-scrollbar">
+                            {flags.map((flag) => (
                               <button
-                                key={flag.code}
+                                key={flag.emoji}
                                 onClick={() => {
-                                  setSelectedFlagImage(flag);
+                                  setSelectedFlag(flag.emoji);
                                   setShowFlagDropdown(false);
                                 }}
-                                className="p-2 hover:bg-slate-700 transition-colors rounded group"
+                                className="p-3 hover:bg-slate-700 transition-colors rounded group flex flex-col items-center gap-1"
                                 title={flag.name}
                               >
-                                <div className="w-8 h-6 rounded-sm overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors shadow-md">
-                                  <img 
-                                    src={flag.url} 
-                                    alt={flag.name}
-                                    className="w-full h-full object-cover"
-                                  />
-                                </div>
+                                <span className="text-2xl">{flag.emoji}</span>
+                                <span className="text-[8px] text-slate-400 group-hover:text-white transition-colors text-center leading-tight">
+                                  {flag.name.split(' ')[0]}
+                                </span>
                               </button>
                             ))}
                           </div>
@@ -259,69 +225,35 @@ const LandingPage: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Military Insignia Selection - Refined */}
+                    {/* Military Star/Medal Selection */}
                     <div className="relative">
                       <button
                         onClick={() => {
                           setShowPatternDropdown(!showPatternDropdown);
                           setShowFlagDropdown(false);
                         }}
-                        className={`h-full px-3 py-3 flex items-center justify-center min-w-[52px] transition-all duration-200 group ${
-                          selectedInsignia 
-                            ? 'pixel-button bg-orange-600 hover:bg-orange-700' 
-                            : 'bg-gradient-to-br from-orange-500/20 to-orange-600/30 border border-orange-400/50 hover:border-orange-300 hover:from-orange-500/30 hover:to-orange-600/40 backdrop-blur-sm'
-                        }`}
-                        title="Select Military Insignia"
+                        className="h-full pixel-button bg-orange-600 hover:bg-orange-700 px-3 flex items-center justify-center min-w-[48px] relative group"
+                        title="Select Military Decoration"
                       >
-                        {selectedInsignia ? (
-                          <div className="w-7 h-7 rounded-full overflow-hidden border border-white/20 shadow-lg bg-slate-800">
-                            <img 
-                              src={selectedInsignia.url} 
-                              alt={selectedInsignia.name}
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.style.display = 'none';
-                                target.parentElement!.style.background = 'linear-gradient(45deg, #fbbf24, #f59e0b)';
-                              }}
-                            />
-                          </div>
-                        ) : (
-                          <div className="flex flex-col items-center gap-1">
-                            <div className="w-7 h-7 rounded-full bg-orange-500/20 flex items-center justify-center relative overflow-hidden">
-                              <Star size={14} className="text-orange-300" />
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
-                            </div>
-                            <div className="text-[8px] font-pixel text-orange-300 leading-none">RANK</div>
-                          </div>
-                        )}
+                        <Star size={18} className="text-white fill-current" />
+                        <div className="absolute -top-1 -right-1 text-xs">
+                          {selectedPattern}
+                        </div>
                       </button>
                       {showPatternDropdown && (
-                        <div className="absolute top-full right-0 mt-2 w-64 pixel-panel p-3 z-50 shadow-2xl">
-                          <div className="text-xs font-pixel text-white mb-2 text-center">SELECT MILITARY INSIGNIA</div>
+                        <div className="absolute top-full right-0 mt-2 w-64 pixel-panel p-4 z-50 shadow-2xl">
+                          <div className="text-xs font-pixel text-white mb-3 text-center">SELECT MILITARY DECORATION</div>
                           <div className="grid grid-cols-5 gap-2">
-                            {insigniaImages.map((insignia) => (
+                            {patterns.map((pattern) => (
                               <button
-                                key={insignia.id}
+                                key={pattern}
                                 onClick={() => {
-                                  setSelectedInsignia(insignia);
+                                  setSelectedPattern(pattern);
                                   setShowPatternDropdown(false);
                                 }}
-                                className="p-2 hover:bg-slate-700 transition-colors rounded group"
-                                title={insignia.name}
+                                className="p-3 hover:bg-slate-700 transition-colors rounded text-2xl flex items-center justify-center"
                               >
-                                <div className="w-7 h-7 rounded-full overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors bg-slate-800 shadow-md">
-                                  <img 
-                                    src={insignia.url} 
-                                    alt={insignia.name}
-                                    className="w-full h-full object-cover"
-                                    onError={(e) => {
-                                      const target = e.target as HTMLImageElement;
-                                      target.style.display = 'none';
-                                      target.parentElement!.style.background = 'linear-gradient(45deg, #fbbf24, #f59e0b)';
-                                    }}
-                                  />
-                                </div>
+                                {pattern}
                               </button>
                             ))}
                           </div>
