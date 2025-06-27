@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings, User, Mail, LogIn, Users, Swords, BookOpen, Languages, Bell, Shield, Star, Flag } from 'lucide-react';
+import { Settings, User, Mail, LogIn, Users, Swords, BookOpen, Languages, Bell, Shield, Star } from 'lucide-react';
 import { useTheme } from '../components/theme/ThemeProvider';
 import Logo from '../components/ui/Logo';
 import LoginModal from '../components/modals/LoginModal';
@@ -25,6 +25,8 @@ const LandingPage: React.FC = () => {
     description: string;
   }>(null);
   const [username, setUsername] = useState('');
+  const [selectedFlag, setSelectedFlag] = useState('🇺🇸');
+  const [selectedPattern, setSelectedPattern] = useState('⚜️');
 
   // Nation flag images
   const flagImages = [
@@ -54,8 +56,8 @@ const LandingPage: React.FC = () => {
     { id: 'medal', name: 'Honor Medal', url: 'https://images.pexels.com/photos/8828471/pexels-photo-8828471.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&dpr=2' },
   ];
 
-  const [selectedFlagImage, setSelectedFlagImage] = useState<typeof flagImages[0] | null>(null);
-  const [selectedInsignia, setSelectedInsignia] = useState<typeof insigniaImages[0] | null>(null);
+  const [selectedFlagImage, setSelectedFlagImage] = useState(flagImages[0]);
+  const [selectedInsignia, setSelectedInsignia] = useState(insigniaImages[0]);
 
   const news = [
     {
@@ -197,21 +199,15 @@ const LandingPage: React.FC = () => {
                           setShowPatternDropdown(false);
                         }}
                         className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 group"
-                        title="Select Nation Flag"
+                        title={`Select Nation - ${selectedFlagImage.name}`}
                       >
-                        {selectedFlagImage ? (
-                          <div className="w-6 h-4 rounded-sm overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors">
-                            <img 
-                              src={selectedFlagImage.url} 
-                              alt={selectedFlagImage.name}
-                              className="w-full h-full object-cover"
-                            />
-                          </div>
-                        ) : (
-                          <div className="w-6 h-4 rounded-sm border-2 border-dashed border-slate-500 group-hover:border-slate-400 transition-colors flex items-center justify-center bg-slate-800/50">
-                            <Flag size={12} className="text-slate-400 group-hover:text-slate-300 transition-colors" />
-                          </div>
-                        )}
+                        <div className="w-6 h-4 rounded-sm overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors">
+                          <img 
+                            src={selectedFlagImage.url} 
+                            alt={selectedFlagImage.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
                       </button>
                       {showFlagDropdown && (
                         <div className="absolute top-full right-0 mt-2 w-64 pixel-panel p-3 z-50">
@@ -248,27 +244,21 @@ const LandingPage: React.FC = () => {
                           setShowFlagDropdown(false);
                         }}
                         className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 group"
-                        title="Select Military Insignia"
+                        title={`Select Military Insignia - ${selectedInsignia.name}`}
                       >
-                        {selectedInsignia ? (
-                          <div className="w-6 h-6 rounded-full overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors bg-slate-800">
-                            <img 
-                              src={selectedInsignia.url} 
-                              alt={selectedInsignia.name}
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                // Fallback to a simple colored circle if image fails to load
-                                const target = e.target as HTMLImageElement;
-                                target.style.display = 'none';
-                                target.parentElement!.style.background = 'linear-gradient(45deg, #fbbf24, #f59e0b)';
-                              }}
-                            />
-                          </div>
-                        ) : (
-                          <div className="w-6 h-6 rounded-full border-2 border-dashed border-slate-500 group-hover:border-slate-400 transition-colors flex items-center justify-center bg-slate-800/50">
-                            <Star size={12} className="text-slate-400 group-hover:text-slate-300 transition-colors" />
-                          </div>
-                        )}
+                        <div className="w-6 h-6 rounded-full overflow-hidden border border-slate-500 group-hover:border-slate-400 transition-colors bg-slate-800">
+                          <img 
+                            src={selectedInsignia.url} 
+                            alt={selectedInsignia.name}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              // Fallback to a simple colored circle if image fails to load
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = 'none';
+                              target.parentElement!.style.background = 'linear-gradient(45deg, #fbbf24, #f59e0b)';
+                            }}
+                          />
+                        </div>
                       </button>
                       {showPatternDropdown && (
                         <div className="absolute top-full right-0 mt-2 w-64 pixel-panel p-3 z-50">
