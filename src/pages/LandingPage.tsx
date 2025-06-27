@@ -199,38 +199,24 @@ const LandingPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    {/* Nation Flag Selection - Refined */}
+                    {/* Nation Flag Selection */}
                     <div className="relative">
                       <button
                         onClick={() => {
                           setShowFlagDropdown(!showFlagDropdown);
                           setShowPatternDropdown(false);
                         }}
-                        className={`h-full px-3 py-3 flex items-center justify-center min-w-[52px] transition-all duration-200 group ${
-                          selectedFlagImage 
-                            ? 'pixel-button bg-blue-600 hover:bg-blue-700' 
-                            : 'bg-gradient-to-br from-blue-500/20 to-blue-600/30 border border-blue-400/50 hover:border-blue-300 hover:from-blue-500/30 hover:to-blue-600/40 backdrop-blur-sm'
-                        }`}
+                        className="relative h-full px-3 py-3 flex items-center justify-center min-w-[52px] transition-all duration-200 group bg-gradient-to-br from-blue-500/20 to-blue-600/30 border border-blue-400/50 hover:border-blue-300 hover:from-blue-500/30 hover:to-blue-600/40 backdrop-blur-sm"
                         title="Select Nation Flag"
                       >
-                        {selectedFlagImage ? (
-                          <div className="relative">
-                            <Flag size={18} className="text-white" />
-                            <div className="absolute -top-1 -right-1 w-5 h-4 rounded-sm overflow-hidden border border-white/30 shadow-lg">
-                              <img 
-                                src={selectedFlagImage.url} 
-                                alt={selectedFlagImage.name}
-                                className="w-full h-full object-cover"
-                              />
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="flex flex-col items-center gap-1">
-                            <div className="w-8 h-6 rounded-sm bg-blue-500/20 flex items-center justify-center relative overflow-hidden">
-                              <Flag size={16} className="text-blue-300" />
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
-                            </div>
-                            <div className="text-[8px] font-pixel text-blue-300 leading-none">FLAG</div>
+                        <Flag size={18} className="text-blue-300" />
+                        {selectedFlagImage && (
+                          <div className="absolute top-1 right-1 w-4 h-3 rounded-sm overflow-hidden border border-white/40 shadow-lg">
+                            <img 
+                              src={selectedFlagImage.url} 
+                              alt={selectedFlagImage.name}
+                              className="w-full h-full object-cover"
+                            />
                           </div>
                         )}
                       </button>
@@ -262,43 +248,29 @@ const LandingPage: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Military Insignia Selection - Refined */}
+                    {/* Military Insignia Selection */}
                     <div className="relative">
                       <button
                         onClick={() => {
                           setShowPatternDropdown(!showPatternDropdown);
                           setShowFlagDropdown(false);
                         }}
-                        className={`h-full px-3 py-3 flex items-center justify-center min-w-[52px] transition-all duration-200 group ${
-                          selectedInsignia 
-                            ? 'pixel-button bg-orange-600 hover:bg-orange-700' 
-                            : 'bg-gradient-to-br from-orange-500/20 to-orange-600/30 border border-orange-400/50 hover:border-orange-300 hover:from-orange-500/30 hover:to-orange-600/40 backdrop-blur-sm'
-                        }`}
+                        className="relative h-full px-3 py-3 flex items-center justify-center min-w-[52px] transition-all duration-200 group bg-gradient-to-br from-orange-500/20 to-orange-600/30 border border-orange-400/50 hover:border-orange-300 hover:from-orange-500/30 hover:to-orange-600/40 backdrop-blur-sm"
                         title="Select Military Insignia"
                       >
-                        {selectedInsignia ? (
-                          <div className="relative">
-                            <Star size={18} className="text-white" />
-                            <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full overflow-hidden border border-white/30 shadow-lg bg-slate-800">
-                              <img 
-                                src={selectedInsignia.url} 
-                                alt={selectedInsignia.name}
-                                className="w-full h-full object-cover"
-                                onError={(e) => {
-                                  const target = e.target as HTMLImageElement;
-                                  target.style.display = 'none';
-                                  target.parentElement!.style.background = 'linear-gradient(45deg, #fbbf24, #f59e0b)';
-                                }}
-                              />
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="flex flex-col items-center gap-1">
-                            <div className="w-7 h-7 rounded-full bg-orange-500/20 flex items-center justify-center relative overflow-hidden">
-                              <Star size={14} className="text-orange-300" />
-                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse"></div>
-                            </div>
-                            <div className="text-[8px] font-pixel text-orange-300 leading-none">RANK</div>
+                        <Star size={18} className="text-orange-300" />
+                        {selectedInsignia && (
+                          <div className="absolute top-1 right-1 w-3 h-3 rounded-full overflow-hidden border border-white/40 shadow-lg bg-slate-800">
+                            <img 
+                              src={selectedInsignia.url} 
+                              alt={selectedInsignia.name}
+                              className="w-full h-full object-cover"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.style.display = 'none';
+                                target.parentElement!.style.background = 'linear-gradient(45deg, #fbbf24, #f59e0b)';
+                              }}
+                            />
                           </div>
                         )}
                       </button>
