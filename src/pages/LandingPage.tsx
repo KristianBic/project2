@@ -25,8 +25,8 @@ const LandingPage: React.FC = () => {
     description: string;
   }>(null);
   const [username, setUsername] = useState('');
-  const [selectedFlag, setSelectedFlag] = useState('🇺🇸');
-  const [selectedPattern, setSelectedPattern] = useState('⚜️');
+  const [selectedFlag, setSelectedFlag] = useState<string | null>(null);
+  const [selectedPattern, setSelectedPattern] = useState<string | null>(null);
 
   const flags = [
     { emoji: '🇺🇸', name: 'United States' },
@@ -192,13 +192,14 @@ const LandingPage: React.FC = () => {
                           setShowFlagDropdown(!showFlagDropdown);
                           setShowPatternDropdown(false);
                         }}
-                        className="h-full pixel-button bg-blue-600 hover:bg-blue-700 px-3 flex items-center justify-center min-w-[48px] relative group"
+                        className="h-full pixel-button bg-blue-600 hover:bg-blue-700 px-3 flex items-center justify-center min-w-[48px]"
                         title="Select Nation Flag"
                       >
-                        <Flag size={18} className="text-white" />
-                        <div className="absolute -top-1 -right-1 text-xs">
-                          {selectedFlag}
-                        </div>
+                        {selectedFlag ? (
+                          <span className="text-xl">{selectedFlag}</span>
+                        ) : (
+                          <Flag size={18} className="text-white" />
+                        )}
                       </button>
                       {showFlagDropdown && (
                         <div className="absolute top-full right-0 mt-2 w-72 pixel-panel p-4 z-50 shadow-2xl">
@@ -232,13 +233,14 @@ const LandingPage: React.FC = () => {
                           setShowPatternDropdown(!showPatternDropdown);
                           setShowFlagDropdown(false);
                         }}
-                        className="h-full pixel-button bg-orange-600 hover:bg-orange-700 px-3 flex items-center justify-center min-w-[48px] relative group"
+                        className="h-full pixel-button bg-orange-600 hover:bg-orange-700 px-3 flex items-center justify-center min-w-[48px]"
                         title="Select Military Decoration"
                       >
-                        <Star size={18} className="text-white fill-current" />
-                        <div className="absolute -top-1 -right-1 text-xs">
-                          {selectedPattern}
-                        </div>
+                        {selectedPattern ? (
+                          <span className="text-xl">{selectedPattern}</span>
+                        ) : (
+                          <Star size={18} className="text-white fill-current" />
+                        )}
                       </button>
                       {showPatternDropdown && (
                         <div className="absolute top-full right-0 mt-2 w-64 pixel-panel p-4 z-50 shadow-2xl">
