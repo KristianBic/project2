@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Settings, User, Mail, LogIn, Users, Swords, BookOpen, Languages, Bell, Shield, Star } from 'lucide-react';
+import { Settings, User, Mail, LogIn, Users, Swords, BookOpen, Languages, Bell, Shield, Star, Flag } from 'lucide-react';
 import { useTheme } from '../components/theme/ThemeProvider';
 import Logo from '../components/ui/Logo';
 import LoginModal from '../components/modals/LoginModal';
@@ -28,7 +28,29 @@ const LandingPage: React.FC = () => {
   const [selectedFlag, setSelectedFlag] = useState('🇺🇸');
   const [selectedPattern, setSelectedPattern] = useState('⚜️');
 
-  const flags = ['🇺🇸', '🇬🇧', '🇫🇷', '🇩🇪', '🇮🇹', '🇪🇸', '🇷🇺', '🇯🇵', '🇰🇷', '🇨🇳'];
+  const flags = [
+    { emoji: '🇺🇸', name: 'United States' },
+    { emoji: '🇬🇧', name: 'United Kingdom' },
+    { emoji: '🇫🇷', name: 'France' },
+    { emoji: '🇩🇪', name: 'Germany' },
+    { emoji: '🇮🇹', name: 'Italy' },
+    { emoji: '🇪🇸', name: 'Spain' },
+    { emoji: '🇷🇺', name: 'Russia' },
+    { emoji: '🇯🇵', name: 'Japan' },
+    { emoji: '🇰🇷', name: 'South Korea' },
+    { emoji: '🇨🇳', name: 'China' },
+    { emoji: '🇨🇦', name: 'Canada' },
+    { emoji: '🇦🇺', name: 'Australia' },
+    { emoji: '🇧🇷', name: 'Brazil' },
+    { emoji: '🇮🇳', name: 'India' },
+    { emoji: '🇲🇽', name: 'Mexico' },
+    { emoji: '🇳🇱', name: 'Netherlands' },
+    { emoji: '🇸🇪', name: 'Sweden' },
+    { emoji: '🇳🇴', name: 'Norway' },
+    { emoji: '🇵🇱', name: 'Poland' },
+    { emoji: '🇹🇷', name: 'Turkey' }
+  ];
+  
   const patterns = ['⚜️', '☘️', '✴️', '❇️', '✳️', '〽️', '🔰', '🎴', '🔱', '📛'];
 
   const news = [
@@ -163,36 +185,39 @@ const LandingPage: React.FC = () => {
                     </div>
                   </div>
                   <div className="flex gap-1">
-                    {/* Nation Shield Selection */}
+                    {/* Nation Flag Selection */}
                     <div className="relative">
                       <button
                         onClick={() => {
                           setShowFlagDropdown(!showFlagDropdown);
                           setShowPatternDropdown(false);
                         }}
-                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 relative group"
-                        title="Select Nation"
+                        className="h-full pixel-button bg-blue-600 hover:bg-blue-700 px-3 flex items-center justify-center min-w-[48px] relative group"
+                        title="Select Nation Flag"
                       >
-                        <div className="relative">
-                          <Shield size={20} className="text-red-400 group-hover:text-red-300 transition-colors" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-2 h-2 bg-white rounded-full"></div>
-                          </div>
+                        <Flag size={18} className="text-white" />
+                        <div className="absolute -top-1 -right-1 text-xs">
+                          {selectedFlag}
                         </div>
                       </button>
                       {showFlagDropdown && (
-                        <div className="absolute top-full right-0 mt-2 w-48 pixel-panel p-2 z-50">
-                          <div className="grid grid-cols-5 gap-1">
+                        <div className="absolute top-full right-0 mt-2 w-72 pixel-panel p-4 z-50 shadow-2xl">
+                          <div className="text-xs font-pixel text-white mb-3 text-center">SELECT NATION FLAG</div>
+                          <div className="grid grid-cols-5 gap-2 max-h-64 overflow-y-auto custom-scrollbar">
                             {flags.map((flag) => (
                               <button
-                                key={flag}
+                                key={flag.emoji}
                                 onClick={() => {
-                                  setSelectedFlag(flag);
+                                  setSelectedFlag(flag.emoji);
                                   setShowFlagDropdown(false);
                                 }}
-                                className="p-2 hover:bg-slate-700 transition-colors text-xl"
+                                className="p-3 hover:bg-slate-700 transition-colors rounded group flex flex-col items-center gap-1"
+                                title={flag.name}
                               >
-                                {flag}
+                                <span className="text-2xl">{flag.emoji}</span>
+                                <span className="text-[8px] text-slate-400 group-hover:text-white transition-colors text-center leading-tight">
+                                  {flag.name.split(' ')[0]}
+                                </span>
                               </button>
                             ))}
                           </div>
@@ -207,19 +232,18 @@ const LandingPage: React.FC = () => {
                           setShowPatternDropdown(!showPatternDropdown);
                           setShowFlagDropdown(false);
                         }}
-                        className="h-full pixel-button bg-slate-700 px-3 flex items-center justify-center min-w-[48px] hover:bg-slate-600 relative group"
+                        className="h-full pixel-button bg-orange-600 hover:bg-orange-700 px-3 flex items-center justify-center min-w-[48px] relative group"
                         title="Select Military Decoration"
                       >
-                        <div className="relative">
-                          <Star size={20} className="text-yellow-400 group-hover:text-yellow-300 transition-colors fill-current" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-1 h-1 bg-red-500 rounded-full"></div>
-                          </div>
+                        <Star size={18} className="text-white fill-current" />
+                        <div className="absolute -top-1 -right-1 text-xs">
+                          {selectedPattern}
                         </div>
                       </button>
                       {showPatternDropdown && (
-                        <div className="absolute top-full right-0 mt-2 w-48 pixel-panel p-2 z-50">
-                          <div className="grid grid-cols-5 gap-1">
+                        <div className="absolute top-full right-0 mt-2 w-64 pixel-panel p-4 z-50 shadow-2xl">
+                          <div className="text-xs font-pixel text-white mb-3 text-center">SELECT MILITARY DECORATION</div>
+                          <div className="grid grid-cols-5 gap-2">
                             {patterns.map((pattern) => (
                               <button
                                 key={pattern}
@@ -227,7 +251,7 @@ const LandingPage: React.FC = () => {
                                   setSelectedPattern(pattern);
                                   setShowPatternDropdown(false);
                                 }}
-                                className="p-2 hover:bg-slate-700 transition-colors text-xl"
+                                className="p-3 hover:bg-slate-700 transition-colors rounded text-2xl flex items-center justify-center"
                               >
                                 {pattern}
                               </button>
