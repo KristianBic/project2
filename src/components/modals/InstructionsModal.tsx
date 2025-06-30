@@ -125,12 +125,14 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
             )}
 
             {activeTab === 'gameui' && (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <h3 className="font-pixel text-xl text-white mb-4">Game UI</h3>
+                
+                {/* Leaderboard Section */}
                 <div className="pixel-panel p-4">
                   <h4 className="font-pixel text-lg text-white mb-2">Leaderboard</h4>
-                  <p className="text-slate-300">Shows the top players of the game and their names, % owned land and gold.</p>
-                  <div className="mt-4 bg-slate-800/50 p-4 rounded">
+                  <p className="text-slate-300 mb-4">Shows the top players of the game and their names, % owned land and gold.</p>
+                  <div className="bg-slate-800/50 p-4 rounded">
                     <table className="w-full">
                       <thead>
                         <tr className="text-slate-400">
@@ -149,6 +151,57 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                         </tr>
                       </tbody>
                     </table>
+                  </div>
+                </div>
+
+                {/* Control Panel Section */}
+                <div className="pixel-panel p-4">
+                  <h4 className="font-pixel text-lg text-white mb-4">Control Panel</h4>
+                  <p className="text-slate-300 mb-4">The control panel shows your resources and allows you to manage your troops and attack settings.</p>
+                  
+                  {/* Control Panel Mockup */}
+                  <div className="bg-slate-800/80 p-6 rounded-lg border border-slate-700 max-w-md">
+                    {/* Population */}
+                    <div className="mb-4">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-white font-pixel text-sm">Pop:</span>
+                        <span className="text-white font-pixel text-sm">3.60K / 12.1K <span className="text-green-400">(+379)</span></span>
+                      </div>
+                    </div>
+
+                    {/* Gold */}
+                    <div className="mb-6">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-white font-pixel text-sm">Gold:</span>
+                        <span className="text-white font-pixel text-sm">245 <span className="text-green-400">(+90)</span></span>
+                      </div>
+                    </div>
+
+                    {/* Troops and Workers */}
+                    <div className="mb-4">
+                      <div className="text-white font-pixel text-sm mb-2">
+                        Troops: 3.38K | Workers: 216
+                      </div>
+                      <div className="relative">
+                        <div className="w-full h-3 bg-slate-700 rounded-full overflow-hidden">
+                          <div className="h-full bg-blue-500 rounded-full" style={{ width: '94%' }}></div>
+                        </div>
+                        <div className="absolute top-1/2 right-2 transform -translate-y-1/2 w-3 h-3 bg-white rounded-full border-2 border-slate-600"></div>
+                      </div>
+                    </div>
+
+                    {/* Attack Ratio */}
+                    <div>
+                      <div className="text-white font-pixel text-sm mb-2">
+                        Attack Ratio: 25% (846)
+                      </div>
+                      <div className="relative">
+                        <div className="w-full h-3 bg-slate-700 rounded-full overflow-hidden">
+                          <div className="h-full bg-red-500 rounded-full" style={{ width: '25%' }}></div>
+                        </div>
+                        <div className="absolute top-1/2 left-1/4 transform -translate-y-1/2 -translate-x-1/2 w-3 h-3 bg-white rounded-full border-2 border-slate-600"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
