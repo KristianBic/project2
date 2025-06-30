@@ -368,45 +368,60 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                 
                 {/* Info Panel Visual */}
                 <div className="pixel-panel p-4">
-                  <h4 className="font-pixel text-lg text-white mb-4">Enemy Info Panel</h4>
-                  <p className="text-slate-300 mb-4">Contains information about the selected player and available actions.</p>
+                  <h4 className="font-pixel text-lg text-white mb-4">Player Info Panel</h4>
+                  <p className="text-slate-300 mb-4">Contains detailed information about the selected player and available actions.</p>
                   
-                  {/* Info Panel Mockup - Styled like website */}
-                  <div className="pixel-panel p-4 max-w-sm">
-                    <div className="text-center mb-4">
-                      <h5 className="text-white font-pixel text-lg mb-2">Persian Oligarchy</h5>
-                      <div className="text-slate-400 font-pixel text-sm">Type: Bot</div>
+                  {/* Info Panel Mockup - Based on provided image */}
+                  <div className="pixel-panel p-4 max-w-xs mx-auto bg-slate-800/80">
+                    {/* Close Button */}
+                    <div className="flex justify-end mb-2">
+                      <div className="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center">
+                        <span className="text-white text-sm font-bold">×</span>
+                      </div>
                     </div>
                     
-                    <div className="space-y-2 mb-4">
-                      <div className="flex justify-between">
-                        <span className="text-slate-400 font-pixel text-xs">Defending troops:</span>
-                        <span className="text-white font-pixel text-xs">6.39K</span>
+                    {/* Player Name */}
+                    <div className="text-center mb-4">
+                      <h5 className="text-white font-pixel text-lg">trueANON</h5>
+                    </div>
+                    
+                    {/* Stats Grid */}
+                    <div className="space-y-3">
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="pixel-panel p-3 bg-slate-700/50">
+                          <div className="text-slate-400 font-pixel text-xs mb-1">Gold</div>
+                          <div className="text-white font-pixel text-sm">1.37K</div>
+                        </div>
+                        <div className="pixel-panel p-3 bg-slate-700/50">
+                          <div className="text-slate-400 font-pixel text-xs mb-1">Troops</div>
+                          <div className="text-white font-pixel text-sm">6.82K</div>
+                        </div>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-slate-400 font-pixel text-xs">Gold:</span>
-                        <span className="text-white font-pixel text-xs">14.3K</span>
+                      
+                      <div className="pixel-panel p-3 bg-slate-700/50">
+                        <div className="text-slate-400 font-pixel text-xs mb-1">Traitor</div>
+                        <div className="text-white font-pixel text-sm">No</div>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-slate-400 font-pixel text-xs">Ports:</span>
-                        <span className="text-white font-pixel text-xs">0</span>
+                      
+                      <div className="pixel-panel p-3 bg-slate-700/50">
+                        <div className="text-slate-400 font-pixel text-xs mb-1">Number of betrayals</div>
+                        <div className="text-white font-pixel text-sm">0</div>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-slate-400 font-pixel text-xs">Cities:</span>
-                        <span className="text-white font-pixel text-xs">0</span>
+                      
+                      <div className="pixel-panel p-3 bg-slate-700/50">
+                        <div className="text-slate-400 font-pixel text-xs mb-1">Stopped trading with you</div>
+                        <div className="text-white font-pixel text-sm">No</div>
                       </div>
-                      <div className="flex justify-between">
-                        <span className="text-slate-400 font-pixel text-xs">Missile launchers:</span>
-                        <span className="text-white font-pixel text-xs">0</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-slate-400 font-pixel text-xs">SAMs:</span>
-                        <span className="text-white font-pixel text-xs">0</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-slate-400 font-pixel text-xs">Warships:</span>
-                        <span className="text-white font-pixel text-xs">0</span>
-                      </div>
+                    </div>
+                    
+                    {/* Action Buttons */}
+                    <div className="flex justify-center gap-3 mt-4">
+                      <button className="w-8 h-8 bg-slate-600 rounded flex items-center justify-center hover:bg-slate-500 transition-colors">
+                        <span className="text-white text-sm">💬</span>
+                      </button>
+                      <button className="w-8 h-8 bg-slate-600 rounded flex items-center justify-center hover:bg-slate-500 transition-colors">
+                        <span className="text-white text-sm">😊</span>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -431,6 +446,12 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                         <span>😊</span>
                       </div>
                       <p className="text-slate-300">Send an emoji to the player.</p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center">
+                        <span>💬</span>
+                      </div>
+                      <p className="text-slate-300">Send a quick chat message to the player.</p>
                     </div>
                   </div>
                 </div>
