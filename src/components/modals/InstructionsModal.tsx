@@ -133,11 +133,11 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                   <h4 className="font-pixel text-lg text-white mb-2">Leaderboard</h4>
                   <p className="text-slate-300 mb-4">Shows the top players of the game and their names, % owned land, gold, and troops.</p>
                   
-                  {/* Leaderboard Mockup */}
-                  <div className="bg-slate-800/80 p-4 rounded border border-slate-700 max-w-lg">
+                  {/* Leaderboard Mockup - Styled like website */}
+                  <div className="pixel-panel p-4 max-w-lg">
                     <table className="w-full font-pixel text-xs">
                       <thead>
-                        <tr className="text-slate-300 border-b border-slate-600">
+                        <tr className="text-slate-400 border-b border-slate-700">
                           <th className="text-left py-2">Rank</th>
                           <th className="text-left py-2">Player</th>
                           <th className="text-left py-2">Owned</th>
@@ -146,28 +146,28 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                         </tr>
                       </thead>
                       <tbody className="text-white">
-                        <tr className="border-b border-slate-700/50">
+                        <tr className="border-b border-slate-800/50">
                           <td className="py-1">1</td>
                           <td className="py-1">Minoan Dynasty</td>
                           <td className="py-1">0.04%</td>
                           <td className="py-1">1.79K</td>
                           <td className="py-1">1.76K</td>
                         </tr>
-                        <tr className="border-b border-slate-700/50">
+                        <tr className="border-b border-slate-800/50">
                           <td className="py-1">2</td>
                           <td className="py-1">Italian Duchy</td>
                           <td className="py-1">0.04%</td>
                           <td className="py-1">1.72K</td>
                           <td className="py-1">1.78K</td>
                         </tr>
-                        <tr className="border-b border-slate-700/50">
+                        <tr className="border-b border-slate-800/50">
                           <td className="py-1">3</td>
                           <td className="py-1">AngloSaxon Caliphate</td>
                           <td className="py-1">0.04%</td>
                           <td className="py-1">1.72K</td>
                           <td className="py-1">1.78K</td>
                         </tr>
-                        <tr className="border-b border-slate-700/50">
+                        <tr className="border-b border-slate-800/50">
                           <td className="py-1">4</td>
                           <td className="py-1">Navajo Host</td>
                           <td className="py-1">0.04%</td>
@@ -197,8 +197,8 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                   <h4 className="font-pixel text-lg text-white mb-4">Control Panel Overview</h4>
                   <p className="text-slate-300 mb-4">The control panel shows your resources and allows you to manage your troops and attack settings.</p>
                   
-                  {/* Control Panel Mockup */}
-                  <div className="bg-slate-800/80 p-6 rounded-lg border border-slate-700 max-w-md">
+                  {/* Control Panel Mockup - Styled like website */}
+                  <div className="pixel-panel p-6 max-w-md">
                     {/* Population */}
                     <div className="mb-4">
                       <div className="flex justify-between items-center mb-2">
@@ -273,8 +273,8 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                   <h4 className="font-pixel text-lg text-white mb-4">Game Controls Bar</h4>
                   <p className="text-slate-300 mb-4">The game controls bar provides quick access to essential game functions and settings.</p>
                   
-                  {/* Game Controls Mockup */}
-                  <div className="bg-slate-800/80 p-4 rounded-lg border border-slate-700 max-w-sm mx-auto">
+                  {/* Game Controls Mockup - Styled like website */}
+                  <div className="pixel-panel p-4 max-w-sm mx-auto">
                     <div className="flex items-center justify-center gap-4">
                       {/* Play Button */}
                       <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
@@ -329,54 +329,8 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
               <div className="space-y-6">
                 <h3 className="font-pixel text-xl text-white mb-4">Radial Menu</h3>
                 
-                {/* Radial Menu Visual */}
                 <div className="pixel-panel p-4">
-                  <h4 className="font-pixel text-lg text-white mb-4">Radial Menu Interface</h4>
-                  <p className="text-slate-300 mb-6">Right clicking (or touch on mobile) opens the radial menu with quick access to various actions.</p>
-                  
-                  {/* Radial Menu Mockup */}
-                  <div className="flex justify-center mb-6">
-                    <div className="relative w-48 h-48">
-                      {/* Center Circle */}
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-slate-700 rounded-full border-4 border-slate-500 flex items-center justify-center">
-                        <div className="w-8 h-8 bg-slate-600 rounded-full flex items-center justify-center">
-                          <span className="text-white text-lg">⚔️</span>
-                        </div>
-                      </div>
-                      
-                      {/* Top Segment - Info */}
-                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-blue-600 rounded-full border-4 border-blue-400 flex items-center justify-center">
-                        <span className="text-white text-xl">ℹ️</span>
-                      </div>
-                      
-                      {/* Right Segment - Build */}
-                      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 w-16 h-16 bg-yellow-600 rounded-full border-4 border-yellow-400 flex items-center justify-center">
-                        <span className="text-white text-xl">🔨</span>
-                      </div>
-                      
-                      {/* Bottom Segment - Ship */}
-                      <div className="absolute bottom-0 left-1/2 transform translate-x-1/2 w-16 h-16 bg-green-600 rounded-full border-4 border-green-400 flex items-center justify-center">
-                        <span className="text-white text-xl">🚢</span>
-                      </div>
-                      
-                      {/* Left Segment - Close */}
-                      <div className="absolute top-1/2 left-0 transform -translate-y-1/2 w-16 h-16 bg-red-600 rounded-full border-4 border-red-400 flex items-center justify-center">
-                        <span className="text-white text-xl">❌</span>
-                      </div>
-                      
-                      {/* Connection Lines */}
-                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                        <div className="w-1 h-16 bg-slate-500 absolute -top-8 left-1/2 transform -translate-x-1/2"></div>
-                        <div className="w-16 h-1 bg-slate-500 absolute top-1/2 -right-8 transform -translate-y-1/2"></div>
-                        <div className="w-1 h-16 bg-slate-500 absolute -bottom-8 left-1/2 transform -translate-x-1/2"></div>
-                        <div className="w-16 h-1 bg-slate-500 absolute top-1/2 -left-8 transform -translate-y-1/2"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="pixel-panel p-4">
-                  <p className="text-slate-300 mb-4">From the radial menu you can:</p>
+                  <p className="text-slate-300 mb-4">Right clicking (or touch on mobile) opens the radial menu with quick access to various actions:</p>
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center">
@@ -416,8 +370,8 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                   <h4 className="font-pixel text-lg text-white mb-4">Enemy Info Panel</h4>
                   <p className="text-slate-300 mb-4">Contains information about the selected player and available actions.</p>
                   
-                  {/* Info Panel Mockup */}
-                  <div className="bg-slate-800/80 p-4 rounded border border-slate-700 max-w-sm">
+                  {/* Info Panel Mockup - Styled like website */}
+                  <div className="pixel-panel p-4 max-w-sm">
                     <div className="text-center mb-4">
                       <h5 className="text-white font-pixel text-lg mb-2">Persian Oligarchy</h5>
                       <div className="text-slate-400 font-pixel text-sm">Type: Bot</div>
@@ -520,11 +474,11 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                   <h4 className="font-pixel text-lg text-white mb-4">Build Menu Interface</h4>
                   <p className="text-slate-300 mb-4">The build menu shows available structures and weapons with their costs and quantities.</p>
                   
-                  {/* Build Menu Mockup */}
-                  <div className="bg-slate-800/80 p-4 rounded border border-slate-700">
+                  {/* Build Menu Mockup - Styled like website */}
+                  <div className="pixel-panel p-4">
                     <div className="grid grid-cols-3 gap-3">
                       {/* Row 1 */}
-                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                      <div className="pixel-panel p-3 text-center">
                         <div className="text-2xl mb-2">☢️</div>
                         <div className="text-white font-pixel text-xs mb-1">Atom Bomb</div>
                         <div className="text-slate-400 font-pixel text-xs mb-1">Small explosion</div>
@@ -532,7 +486,7 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                         <div className="text-slate-400 font-pixel text-xs">0</div>
                       </div>
                       
-                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                      <div className="pixel-panel p-3 text-center">
                         <div className="text-2xl mb-2">🎯</div>
                         <div className="text-white font-pixel text-xs mb-1">MIRV</div>
                         <div className="text-slate-400 font-pixel text-xs mb-1">Huge explosion, only targets selected player</div>
@@ -540,7 +494,7 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                         <div className="text-slate-400 font-pixel text-xs">0</div>
                       </div>
                       
-                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                      <div className="pixel-panel p-3 text-center">
                         <div className="text-2xl mb-2">💥</div>
                         <div className="text-white font-pixel text-xs mb-1">Hydrogen Bomb</div>
                         <div className="text-slate-400 font-pixel text-xs mb-1">Large explosion</div>
@@ -549,7 +503,7 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                       </div>
                       
                       {/* Row 2 */}
-                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                      <div className="pixel-panel p-3 text-center">
                         <div className="text-2xl mb-2">🚢</div>
                         <div className="text-white font-pixel text-xs mb-1">Warship</div>
                         <div className="text-slate-400 font-pixel text-xs mb-1">Captures trade ships, destroys ships and boats</div>
@@ -557,7 +511,7 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                         <div className="text-slate-400 font-pixel text-xs">0</div>
                       </div>
                       
-                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                      <div className="pixel-panel p-3 text-center">
                         <div className="text-2xl mb-2">⚓</div>
                         <div className="text-white font-pixel text-xs mb-1">Port</div>
                         <div className="text-slate-400 font-pixel text-xs mb-1">Sends trade ships to generate gold</div>
@@ -565,7 +519,7 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                         <div className="text-slate-400 font-pixel text-xs">0</div>
                       </div>
                       
-                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                      <div className="pixel-panel p-3 text-center">
                         <div className="text-2xl mb-2">🚀</div>
                         <div className="text-white font-pixel text-xs mb-1">Missile Silo</div>
                         <div className="text-slate-400 font-pixel text-xs mb-1">Used to launch nukes</div>
@@ -574,7 +528,7 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                       </div>
                       
                       {/* Row 3 */}
-                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                      <div className="pixel-panel p-3 text-center">
                         <div className="text-2xl mb-2">🛡️</div>
                         <div className="text-white font-pixel text-xs mb-1">SAM Launcher</div>
                         <div className="text-slate-400 font-pixel text-xs mb-1">Defends against incoming nukes</div>
@@ -582,7 +536,7 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                         <div className="text-slate-400 font-pixel text-xs">0</div>
                       </div>
                       
-                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                      <div className="pixel-panel p-3 text-center">
                         <div className="text-2xl mb-2">🏰</div>
                         <div className="text-white font-pixel text-xs mb-1">Defense Post</div>
                         <div className="text-slate-400 font-pixel text-xs mb-1">Increases defenses of nearby borders</div>
@@ -590,7 +544,7 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                         <div className="text-slate-400 font-pixel text-xs">0</div>
                       </div>
                       
-                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                      <div className="pixel-panel p-3 text-center">
                         <div className="text-2xl mb-2">🏢</div>
                         <div className="text-white font-pixel text-xs mb-1">City</div>
                         <div className="text-slate-400 font-pixel text-xs mb-1">Increases max population</div>
