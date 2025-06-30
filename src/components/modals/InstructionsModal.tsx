@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { X, Keyboard, Layout, Sliders, Settings, Menu, Info, Users, Building, Crown } from 'lucide-react';
+import { X, Keyboard, Layout, Sliders, Settings, Menu, Info, Users, Building, Crown, Bell } from 'lucide-react';
 
 interface InstructionsModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-type TabType = 'hotkeys' | 'gameui' | 'control' | 'options' | 'radial' | 'info' | 'ally' | 'build' | 'icons';
+type TabType = 'hotkeys' | 'gameui' | 'control' | 'options' | 'radial' | 'info' | 'ally' | 'build' | 'icons' | 'events';
 
 const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }) => {
   const [activeTab, setActiveTab] = useState<TabType>('hotkeys');
@@ -49,6 +49,7 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
     { id: 'ally' as TabType, label: 'Ally Info', icon: <Users size={18} /> },
     { id: 'build' as TabType, label: 'Build Menu', icon: <Building size={18} /> },
     { id: 'icons' as TabType, label: 'Player Icons', icon: <Crown size={18} /> },
+    { id: 'events' as TabType, label: 'Event Panel', icon: <Bell size={18} /> },
   ];
   
   return (
@@ -648,6 +649,93 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                       <div>
                         <h4 className="text-white font-pixel">Handshake</h4>
                         <p className="text-slate-300">Ally. This player is your ally.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'events' && (
+              <div className="space-y-6">
+                <h3 className="font-pixel text-xl text-white mb-4">Event Panel</h3>
+                
+                {/* Event Panel Visual */}
+                <div className="pixel-panel p-4">
+                  <h4 className="font-pixel text-lg text-white mb-4">Event Panel Interface</h4>
+                  <p className="text-slate-300 mb-4">The Event panel displays the latest events, requests and Quick Chat messages.</p>
+                  
+                  {/* Event Panel Mockup - Styled like website */}
+                  <div className="pixel-panel p-4 max-w-md">
+                    <div className="space-y-3">
+                      {/* Hide Button */}
+                      <div className="flex justify-between items-center mb-4">
+                        <button className="text-slate-400 hover:text-white font-pixel text-xs transition-colors">
+                          Hide
+                        </button>
+                      </div>
+                      
+                      {/* Alliance Request */}
+                      <div className="pixel-panel p-3 border-l-4 border-green-500">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-green-400 font-pixel text-xs">Sent Japanese Area:</span>
+                          <span className="text-red-400 font-pixel text-xs cursor-pointer hover:text-red-300">❓</span>
+                        </div>
+                      </div>
+                      
+                      {/* Alliance Accepted */}
+                      <div className="pixel-panel p-3 border-l-4 border-blue-500">
+                        <div className="text-blue-400 font-pixel text-xs mb-1">Japanese Area accepted your alliance request</div>
+                      </div>
+                      
+                      {/* Attack Messages */}
+                      <div className="pixel-panel p-3 border-l-4 border-red-500">
+                        <div className="flex items-center justify-between">
+                          <span className="text-blue-400 font-pixel text-xs">596 Bhutanese Sisterhood</span>
+                          <span className="text-red-400 font-pixel text-xs cursor-pointer hover:text-red-300">❌</span>
+                        </div>
+                      </div>
+                      
+                      <div className="pixel-panel p-3 border-l-4 border-red-500">
+                        <div className="flex items-center justify-between">
+                          <span className="text-slate-300 font-pixel text-xs">3.66K Wilderness</span>
+                          <span className="text-red-400 font-pixel text-xs cursor-pointer hover:text-red-300">❌</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pixel-panel p-4">
+                  <h4 className="font-pixel text-lg text-white mb-4">Event Types</h4>
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4">
+                      <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-white text-sm">🤝</span>
+                      </div>
+                      <div>
+                        <h5 className="text-white font-pixel mb-2">Alliance</h5>
+                        <p className="text-slate-300">Alliance requests can be accepted or rejected. Allies can share resources and troops, but can't attack each other. Clicking Focus moves the view to the player who sent the request.</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4">
+                      <div className="w-8 h-8 bg-red-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-white text-sm">⚔️</span>
+                      </div>
+                      <div>
+                        <h5 className="text-white font-pixel mb-2">Attacks</h5>
+                        <p className="text-slate-300">Incoming attacks and your outgoing attacks are shown. Click the message to center the view on the attack, nuke or Boat (transport ship). You can retreat troops by clicking the red X button. This will cost the lives of 25% of your attacking troops. If you retrieve a Boat attack, the boat returns to its starting point and will attack there if the land has been captured since. Nukes can't be retreated once launched.</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-4">
+                      <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <span className="text-white text-sm">💬</span>
+                      </div>
+                      <div>
+                        <h5 className="text-white font-pixel mb-2">Quick Chat</h5>
+                        <p className="text-slate-300">You can see sent and received chat messages here. Send a message to a player by clicking the Quick Chat icon in their Info menu.</p>
                       </div>
                     </div>
                   </div>
