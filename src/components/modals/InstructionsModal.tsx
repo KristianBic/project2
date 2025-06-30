@@ -153,10 +153,16 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                     </table>
                   </div>
                 </div>
+              </div>
+            )}
 
-                {/* Control Panel Section */}
+            {activeTab === 'control' && (
+              <div className="space-y-6">
+                <h3 className="font-pixel text-xl text-white mb-4">Control Panel</h3>
+                
+                {/* Control Panel Visual Example */}
                 <div className="pixel-panel p-4">
-                  <h4 className="font-pixel text-lg text-white mb-4">Control Panel</h4>
+                  <h4 className="font-pixel text-lg text-white mb-4">Control Panel Overview</h4>
                   <p className="text-slate-300 mb-4">The control panel shows your resources and allows you to manage your troops and attack settings.</p>
                   
                   {/* Control Panel Mockup */}
@@ -204,12 +210,7 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
 
-            {activeTab === 'control' && (
-              <div className="space-y-4">
-                <h3 className="font-pixel text-xl text-white mb-4">Control Panel</h3>
                 <div className="space-y-6">
                   <div className="pixel-panel p-4">
                     <h4 className="font-pixel text-lg text-white mb-2">Population</h4>
