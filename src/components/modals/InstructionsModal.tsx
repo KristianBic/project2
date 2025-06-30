@@ -326,31 +326,78 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
             )}
 
             {activeTab === 'radial' && (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <h3 className="font-pixel text-xl text-white mb-4">Radial Menu</h3>
+                
+                {/* Radial Menu Visual */}
                 <div className="pixel-panel p-4">
-                  <p className="text-slate-300 mb-4">Right clicking (or touch on mobile) opens the radial menu. From there you can:</p>
+                  <h4 className="font-pixel text-lg text-white mb-4">Radial Menu Interface</h4>
+                  <p className="text-slate-300 mb-6">Right clicking (or touch on mobile) opens the radial menu with quick access to various actions.</p>
+                  
+                  {/* Radial Menu Mockup */}
+                  <div className="flex justify-center mb-6">
+                    <div className="relative w-48 h-48">
+                      {/* Center Circle */}
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-slate-700 rounded-full border-4 border-slate-500 flex items-center justify-center">
+                        <div className="w-8 h-8 bg-slate-600 rounded-full flex items-center justify-center">
+                          <span className="text-white text-lg">⚔️</span>
+                        </div>
+                      </div>
+                      
+                      {/* Top Segment - Info */}
+                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-blue-600 rounded-full border-4 border-blue-400 flex items-center justify-center">
+                        <span className="text-white text-xl">ℹ️</span>
+                      </div>
+                      
+                      {/* Right Segment - Build */}
+                      <div className="absolute top-1/2 right-0 transform -translate-y-1/2 w-16 h-16 bg-yellow-600 rounded-full border-4 border-yellow-400 flex items-center justify-center">
+                        <span className="text-white text-xl">🔨</span>
+                      </div>
+                      
+                      {/* Bottom Segment - Ship */}
+                      <div className="absolute bottom-0 left-1/2 transform translate-x-1/2 w-16 h-16 bg-green-600 rounded-full border-4 border-green-400 flex items-center justify-center">
+                        <span className="text-white text-xl">🚢</span>
+                      </div>
+                      
+                      {/* Left Segment - Close */}
+                      <div className="absolute top-1/2 left-0 transform -translate-y-1/2 w-16 h-16 bg-red-600 rounded-full border-4 border-red-400 flex items-center justify-center">
+                        <span className="text-white text-xl">❌</span>
+                      </div>
+                      
+                      {/* Connection Lines */}
+                      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <div className="w-1 h-16 bg-slate-500 absolute -top-8 left-1/2 transform -translate-x-1/2"></div>
+                        <div className="w-16 h-1 bg-slate-500 absolute top-1/2 -right-8 transform -translate-y-1/2"></div>
+                        <div className="w-1 h-16 bg-slate-500 absolute -bottom-8 left-1/2 transform -translate-x-1/2"></div>
+                        <div className="w-16 h-1 bg-slate-500 absolute top-1/2 -left-8 transform -translate-y-1/2"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pixel-panel p-4">
+                  <p className="text-slate-300 mb-4">From the radial menu you can:</p>
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center">
                         <span className="text-2xl">🔨</span>
                       </div>
                       <p className="text-slate-300">Open the build menu.</p>
                     </div>
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center">
                         <span className="text-2xl">ℹ️</span>
                       </div>
                       <p className="text-slate-300">Open the info menu.</p>
                     </div>
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
                         <span className="text-2xl">🚢</span>
                       </div>
                       <p className="text-slate-300">Send a boat to attack at the selected location (only available if you have access to water).</p>
                     </div>
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-slate-800 rounded-full flex items-center justify-center">
+                      <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center">
                         <span className="text-2xl">❌</span>
                       </div>
                       <p className="text-slate-300">Close the menu.</p>
@@ -361,31 +408,56 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
             )}
 
             {activeTab === 'info' && (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <h3 className="font-pixel text-xl text-white mb-4">Info Menu</h3>
+                
+                {/* Info Panel Visual */}
                 <div className="pixel-panel p-4">
                   <h4 className="font-pixel text-lg text-white mb-4">Enemy Info Panel</h4>
-                  <p className="text-slate-300 mb-4">Contains information about the selected player:</p>
-                  <div className="bg-slate-800/50 p-4 rounded mb-6">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <span className="text-slate-400">Name:</span>
-                        <span className="text-white ml-2">Etruscan Legion</span>
+                  <p className="text-slate-300 mb-4">Contains information about the selected player and available actions.</p>
+                  
+                  {/* Info Panel Mockup */}
+                  <div className="bg-slate-800/80 p-4 rounded border border-slate-700 max-w-sm">
+                    <div className="text-center mb-4">
+                      <h5 className="text-white font-pixel text-lg mb-2">Persian Oligarchy</h5>
+                      <div className="text-slate-400 font-pixel text-sm">Type: Bot</div>
+                    </div>
+                    
+                    <div className="space-y-2 mb-4">
+                      <div className="flex justify-between">
+                        <span className="text-slate-400 font-pixel text-xs">Defending troops:</span>
+                        <span className="text-white font-pixel text-xs">6.39K</span>
                       </div>
-                      <div>
-                        <span className="text-slate-400">Gold:</span>
-                        <span className="text-white ml-2">12</span>
+                      <div className="flex justify-between">
+                        <span className="text-slate-400 font-pixel text-xs">Gold:</span>
+                        <span className="text-white font-pixel text-xs">14.3K</span>
                       </div>
-                      <div>
-                        <span className="text-slate-400">Troops:</span>
-                        <span className="text-white ml-2">790</span>
+                      <div className="flex justify-between">
+                        <span className="text-slate-400 font-pixel text-xs">Ports:</span>
+                        <span className="text-white font-pixel text-xs">0</span>
                       </div>
-                      <div>
-                        <span className="text-slate-400">Traitor:</span>
-                        <span className="text-white ml-2">No</span>
+                      <div className="flex justify-between">
+                        <span className="text-slate-400 font-pixel text-xs">Cities:</span>
+                        <span className="text-white font-pixel text-xs">0</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-slate-400 font-pixel text-xs">Missile launchers:</span>
+                        <span className="text-white font-pixel text-xs">0</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-slate-400 font-pixel text-xs">SAMs:</span>
+                        <span className="text-white font-pixel text-xs">0</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-slate-400 font-pixel text-xs">Warships:</span>
+                        <span className="text-white font-pixel text-xs">0</span>
                       </div>
                     </div>
                   </div>
+                </div>
+
+                <div className="pixel-panel p-4">
+                  <h4 className="font-pixel text-lg text-white mb-4">Available Actions</h4>
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
                       <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center">
@@ -440,8 +512,95 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
             )}
 
             {activeTab === 'build' && (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <h3 className="font-pixel text-xl text-white mb-4">Build Menu</h3>
+                
+                {/* Build Menu Visual */}
+                <div className="pixel-panel p-4">
+                  <h4 className="font-pixel text-lg text-white mb-4">Build Menu Interface</h4>
+                  <p className="text-slate-300 mb-4">The build menu shows available structures and weapons with their costs and quantities.</p>
+                  
+                  {/* Build Menu Mockup */}
+                  <div className="bg-slate-800/80 p-4 rounded border border-slate-700">
+                    <div className="grid grid-cols-3 gap-3">
+                      {/* Row 1 */}
+                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                        <div className="text-2xl mb-2">☢️</div>
+                        <div className="text-white font-pixel text-xs mb-1">Atom Bomb</div>
+                        <div className="text-slate-400 font-pixel text-xs mb-1">Small explosion</div>
+                        <div className="text-orange-400 font-pixel text-xs">750K ⚡</div>
+                        <div className="text-slate-400 font-pixel text-xs">0</div>
+                      </div>
+                      
+                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                        <div className="text-2xl mb-2">🎯</div>
+                        <div className="text-white font-pixel text-xs mb-1">MIRV</div>
+                        <div className="text-slate-400 font-pixel text-xs mb-1">Huge explosion, only targets selected player</div>
+                        <div className="text-orange-400 font-pixel text-xs">25.0M ⚡</div>
+                        <div className="text-slate-400 font-pixel text-xs">0</div>
+                      </div>
+                      
+                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                        <div className="text-2xl mb-2">💥</div>
+                        <div className="text-white font-pixel text-xs mb-1">Hydrogen Bomb</div>
+                        <div className="text-slate-400 font-pixel text-xs mb-1">Large explosion</div>
+                        <div className="text-orange-400 font-pixel text-xs">5.00M ⚡</div>
+                        <div className="text-slate-400 font-pixel text-xs">0</div>
+                      </div>
+                      
+                      {/* Row 2 */}
+                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                        <div className="text-2xl mb-2">🚢</div>
+                        <div className="text-white font-pixel text-xs mb-1">Warship</div>
+                        <div className="text-slate-400 font-pixel text-xs mb-1">Captures trade ships, destroys ships and boats</div>
+                        <div className="text-orange-400 font-pixel text-xs">250K ⚡</div>
+                        <div className="text-slate-400 font-pixel text-xs">0</div>
+                      </div>
+                      
+                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                        <div className="text-2xl mb-2">⚓</div>
+                        <div className="text-white font-pixel text-xs mb-1">Port</div>
+                        <div className="text-slate-400 font-pixel text-xs mb-1">Sends trade ships to generate gold</div>
+                        <div className="text-orange-400 font-pixel text-xs">125K ⚡</div>
+                        <div className="text-slate-400 font-pixel text-xs">0</div>
+                      </div>
+                      
+                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                        <div className="text-2xl mb-2">🚀</div>
+                        <div className="text-white font-pixel text-xs mb-1">Missile Silo</div>
+                        <div className="text-slate-400 font-pixel text-xs mb-1">Used to launch nukes</div>
+                        <div className="text-orange-400 font-pixel text-xs">1.00M ⚡</div>
+                        <div className="text-slate-400 font-pixel text-xs">0</div>
+                      </div>
+                      
+                      {/* Row 3 */}
+                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                        <div className="text-2xl mb-2">🛡️</div>
+                        <div className="text-white font-pixel text-xs mb-1">SAM Launcher</div>
+                        <div className="text-slate-400 font-pixel text-xs mb-1">Defends against incoming nukes</div>
+                        <div className="text-orange-400 font-pixel text-xs">1.50M ⚡</div>
+                        <div className="text-slate-400 font-pixel text-xs">0</div>
+                      </div>
+                      
+                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                        <div className="text-2xl mb-2">🏰</div>
+                        <div className="text-white font-pixel text-xs mb-1">Defense Post</div>
+                        <div className="text-slate-400 font-pixel text-xs mb-1">Increases defenses of nearby borders</div>
+                        <div className="text-orange-400 font-pixel text-xs">50.0K ⚡</div>
+                        <div className="text-slate-400 font-pixel text-xs">0</div>
+                      </div>
+                      
+                      <div className="bg-slate-700 p-3 rounded border border-slate-600 text-center">
+                        <div className="text-2xl mb-2">🏢</div>
+                        <div className="text-white font-pixel text-xs mb-1">City</div>
+                        <div className="text-slate-400 font-pixel text-xs mb-1">Increases max population</div>
+                        <div className="text-orange-400 font-pixel text-xs">125K ⚡</div>
+                        <div className="text-slate-400 font-pixel text-xs">0</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="grid gap-4">
                   {[
                     {
