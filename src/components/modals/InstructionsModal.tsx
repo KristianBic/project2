@@ -128,23 +128,6 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
               <div className="space-y-6">
                 <h3 className="font-pixel text-xl text-white mb-4">Game UI</h3>
                 
-                {/* Top Bar Controls */}
-                <div className="pixel-panel p-4">
-                  <h4 className="font-pixel text-lg text-white mb-2">Top Bar Controls</h4>
-                  <p className="text-slate-300 mb-4">The top bar contains Hide/Show toggles and the main leaderboard display.</p>
-                  
-                  {/* Top Bar Mockup */}
-                  <div className="bg-slate-800/80 p-3 rounded border border-slate-700">
-                    <div className="flex items-center justify-between text-xs">
-                      <div className="flex gap-3">
-                        <button className="text-white font-pixel hover:text-slate-300">Hide</button>
-                        <button className="text-white font-pixel hover:text-slate-300">Show All</button>
-                      </div>
-                      <div className="text-white font-pixel">14s</div>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Leaderboard Section */}
                 <div className="pixel-panel p-4">
                   <h4 className="font-pixel text-lg text-white mb-2">Leaderboard</h4>
@@ -200,17 +183,6 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
                         </tr>
                       </tbody>
                     </table>
-                  </div>
-                </div>
-
-                {/* Additional UI Elements */}
-                <div className="pixel-panel p-4">
-                  <h4 className="font-pixel text-lg text-white mb-2">Additional UI Elements</h4>
-                  <div className="space-y-3 text-slate-300">
-                    <p>• <strong>Timer:</strong> Shows elapsed game time in the top right</p>
-                    <p>• <strong>Hide/Show Controls:</strong> Toggle visibility of UI elements</p>
-                    <p>• <strong>Player Highlighting:</strong> Your player entry is highlighted in blue</p>
-                    <p>• <strong>Real-time Updates:</strong> All values update automatically during gameplay</p>
                   </div>
                 </div>
               </div>
@@ -293,16 +265,60 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
             )}
 
             {activeTab === 'options' && (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <h3 className="font-pixel text-xl text-white mb-4">Options</h3>
+                
+                {/* Game Controls Visual */}
+                <div className="pixel-panel p-4">
+                  <h4 className="font-pixel text-lg text-white mb-4">Game Controls Bar</h4>
+                  <p className="text-slate-300 mb-4">The game controls bar provides quick access to essential game functions and settings.</p>
+                  
+                  {/* Game Controls Mockup */}
+                  <div className="bg-slate-800/80 p-4 rounded-lg border border-slate-700 max-w-sm mx-auto">
+                    <div className="flex items-center justify-center gap-4">
+                      {/* Play Button */}
+                      <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                        <div className="w-0 h-0 border-l-[6px] border-l-white border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-1"></div>
+                      </div>
+                      
+                      {/* Timer */}
+                      <div className="text-white font-pixel text-sm">
+                        11s
+                      </div>
+                      
+                      {/* Close Button */}
+                      <div className="w-8 h-8 bg-red-600 rounded flex items-center justify-center">
+                        <div className="text-white text-lg leading-none">×</div>
+                      </div>
+                      
+                      {/* Settings Button */}
+                      <div className="w-8 h-8 bg-slate-600 rounded flex items-center justify-center">
+                        <div className="w-4 h-4 border border-white rounded-sm relative">
+                          <div className="absolute inset-1 border border-white rounded-sm"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="space-y-4">
                   <div className="pixel-panel p-4">
                     <h4 className="font-pixel text-lg text-white mb-2">Game Controls</h4>
                     <ul className="space-y-2 text-slate-300">
-                      <li>• Pause/Unpause the game - Only available in single player mode.</li>
-                      <li>• Timer - Time passed since the start of the game.</li>
-                      <li>• Exit button.</li>
-                      <li>• Settings - Open the settings menu. Inside you can toggle the Alternate View, Dark Mode, Emojis and action on left click.</li>
+                      <li>• <strong>Play/Pause button</strong> - Control game flow (single player only)</li>
+                      <li>• <strong>Timer</strong> - Shows time elapsed since game start</li>
+                      <li>• <strong>Exit button</strong> - Leave the current game</li>
+                      <li>• <strong>Settings button</strong> - Access game settings and options</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="pixel-panel p-4">
+                    <h4 className="font-pixel text-lg text-white mb-2">Settings Menu</h4>
+                    <ul className="space-y-2 text-slate-300">
+                      <li>• Toggle Alternate View between terrain and political maps</li>
+                      <li>• Enable/disable Dark Mode for better visibility</li>
+                      <li>• Show/hide Emojis in player communications</li>
+                      <li>• Configure left-click action (attack or open menu)</li>
                     </ul>
                   </div>
                 </div>
