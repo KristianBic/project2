@@ -128,29 +128,89 @@ const InstructionsModal: React.FC<InstructionsModalProps> = ({ isOpen, onClose }
               <div className="space-y-6">
                 <h3 className="font-pixel text-xl text-white mb-4">Game UI</h3>
                 
+                {/* Top Bar Controls */}
+                <div className="pixel-panel p-4">
+                  <h4 className="font-pixel text-lg text-white mb-2">Top Bar Controls</h4>
+                  <p className="text-slate-300 mb-4">The top bar contains Hide/Show toggles and the main leaderboard display.</p>
+                  
+                  {/* Top Bar Mockup */}
+                  <div className="bg-slate-800/80 p-3 rounded border border-slate-700">
+                    <div className="flex items-center justify-between text-xs">
+                      <div className="flex gap-3">
+                        <button className="text-white font-pixel hover:text-slate-300">Hide</button>
+                        <button className="text-white font-pixel hover:text-slate-300">Show All</button>
+                      </div>
+                      <div className="text-white font-pixel">14s</div>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Leaderboard Section */}
                 <div className="pixel-panel p-4">
                   <h4 className="font-pixel text-lg text-white mb-2">Leaderboard</h4>
-                  <p className="text-slate-300 mb-4">Shows the top players of the game and their names, % owned land and gold.</p>
-                  <div className="bg-slate-800/50 p-4 rounded">
-                    <table className="w-full">
+                  <p className="text-slate-300 mb-4">Shows the top players of the game and their names, % owned land, gold, and troops.</p>
+                  
+                  {/* Leaderboard Mockup */}
+                  <div className="bg-slate-800/80 p-4 rounded border border-slate-700 max-w-lg">
+                    <table className="w-full font-pixel text-xs">
                       <thead>
-                        <tr className="text-slate-400">
-                          <th className="text-left">Rank</th>
-                          <th className="text-left">Player</th>
-                          <th className="text-left">Owned</th>
-                          <th className="text-left">Gold</th>
+                        <tr className="text-slate-300 border-b border-slate-600">
+                          <th className="text-left py-2">Rank</th>
+                          <th className="text-left py-2">Player</th>
+                          <th className="text-left py-2">Owned</th>
+                          <th className="text-left py-2">Gold</th>
+                          <th className="text-left py-2">Troops</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr className="text-white">
-                          <td>1</td>
-                          <td>Antarctica</td>
-                          <td>0.11%</td>
-                          <td>6</td>
+                      <tbody className="text-white">
+                        <tr className="border-b border-slate-700/50">
+                          <td className="py-1">1</td>
+                          <td className="py-1">Minoan Dynasty</td>
+                          <td className="py-1">0.04%</td>
+                          <td className="py-1">1.79K</td>
+                          <td className="py-1">1.76K</td>
+                        </tr>
+                        <tr className="border-b border-slate-700/50">
+                          <td className="py-1">2</td>
+                          <td className="py-1">Italian Duchy</td>
+                          <td className="py-1">0.04%</td>
+                          <td className="py-1">1.72K</td>
+                          <td className="py-1">1.78K</td>
+                        </tr>
+                        <tr className="border-b border-slate-700/50">
+                          <td className="py-1">3</td>
+                          <td className="py-1">AngloSaxon Caliphate</td>
+                          <td className="py-1">0.04%</td>
+                          <td className="py-1">1.72K</td>
+                          <td className="py-1">1.78K</td>
+                        </tr>
+                        <tr className="border-b border-slate-700/50">
+                          <td className="py-1">4</td>
+                          <td className="py-1">Navajo Host</td>
+                          <td className="py-1">0.04%</td>
+                          <td className="py-1">1.80K</td>
+                          <td className="py-1">1.73K</td>
+                        </tr>
+                        <tr className="text-blue-300">
+                          <td className="py-1 font-bold">442</td>
+                          <td className="py-1 font-bold">trueANON</td>
+                          <td className="py-1 font-bold">0%</td>
+                          <td className="py-1 font-bold">1.16K</td>
+                          <td className="py-1 font-bold">6.23K</td>
                         </tr>
                       </tbody>
                     </table>
+                  </div>
+                </div>
+
+                {/* Additional UI Elements */}
+                <div className="pixel-panel p-4">
+                  <h4 className="font-pixel text-lg text-white mb-2">Additional UI Elements</h4>
+                  <div className="space-y-3 text-slate-300">
+                    <p>• <strong>Timer:</strong> Shows elapsed game time in the top right</p>
+                    <p>• <strong>Hide/Show Controls:</strong> Toggle visibility of UI elements</p>
+                    <p>• <strong>Player Highlighting:</strong> Your player entry is highlighted in blue</p>
+                    <p>• <strong>Real-time Updates:</strong> All values update automatically during gameplay</p>
                   </div>
                 </div>
               </div>
