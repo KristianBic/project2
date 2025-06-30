@@ -36,6 +36,12 @@ const PlayerAccountModal: React.FC<PlayerAccountModalProps> = ({ isOpen, onClose
       onClose();
     }, 200);
   };
+
+  const handleTabClick = (tabId: TabType, event: React.MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setActiveTab(tabId);
+  };
   
   if (!isOpen) return null;
 
@@ -91,7 +97,7 @@ const PlayerAccountModal: React.FC<PlayerAccountModalProps> = ({ isOpen, onClose
             {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
+                onClick={(e) => handleTabClick(tab.id, e)}
                 className={`flex items-center gap-2 px-4 py-3 font-pixel text-sm transition-all ${
                   activeTab === tab.id
                     ? 'bg-blue-600 text-white'
